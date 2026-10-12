@@ -1,0 +1,46 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un programa Java que ordene un arreglo de enteros casi ordenado mediante Insertion Sort y muestre el proceso.
+>
+> **Instrucciones:**
+>
+> 1. Describe la estrategia: mantener ordenado el prefijo izquierdo, tomar el siguiente elemento e insertarlo en su posición desplazando hacia la derecha los elementos mayores.
+> 2. Justifica por qué Insertion Sort funciona bien con datos casi ordenados: cuando hay pocos elementos fuera de lugar, se requieren pocos desplazamientos.
+> 3. Define la entrada como una cantidad de elementos y sus valores enteros; incluye el ejemplo `{1, 2, 3, 5, 4, 6, 7}`.
+> 4. Especifica que la salida debe mostrar el arreglo original, el estado después de cada inserción, el arreglo ordenado y la cantidad de desplazamientos. Define un desplazamiento como mover un elemento mayor una posición a la derecha; la colocación final del elemento insertado no cuenta.
+> 5. Analiza las complejidades: mejor caso O(n), promedio y peor caso O(n²), y espacio auxiliar O(1). Explica que con pocos desplazamientos el rendimiento se acerca a O(n).
+> 6. Propón criterios de aceptación y casos de prueba: ejemplo casi ordenado, ya ordenado, orden inverso, vacío, un elemento, repetidos y valores extremos.
+> 7. Entrega un análisis claro y estructurado, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java Insertion Sort para ordenar un arreglo de enteros in-place y mostrar paso a paso su proceso.
+>
+> **Instrucciones:**
+>
+> 1. Implementa el método de ordenamiento manteniendo ordenado el prefijo izquierdo. En cada iteración, guarda el elemento actual, desplaza una posición a la derecha cada elemento previo que sea mayor y coloca el elemento guardado en el hueco.
+> 2. Cuenta cada desplazamiento de un elemento mayor hacia la derecha. No cuentes la asignación final que coloca el elemento insertado. También puedes contabilizar las comparaciones entre valores para el análisis.
+> 3. Conserva el arreglo original y registra el estado del arreglo al finalizar cada inserción para poder mostrarlo paso a paso. Presenta el original, cada estado, el arreglo final y los contadores.
+> 4. Incluye el ejemplo `{1, 2, 3, 5, 4, 6, 7}`; debe quedar ordenado y requerir un desplazamiento.
+> 5. Comenta cómo se mantiene ordenado el prefijo y explica por qué pocos elementos fuera de lugar favorecen a Insertion Sort.
+> 6. Documenta las complejidades: mejor caso O(n), promedio y peor caso O(n²), espacio auxiliar O(1). Rechaza un arreglo `null` con error descriptivo y acepta arreglos vacíos o de un elemento.
+> 7. Verifica los resultados contra un ordenamiento de referencia y prueba también arreglos ya ordenados, en orden inverso, con repetidos, vacíos, de un elemento y con valores extremos. Incluye un modo de prueba automática y, si se solicita entrada por consola, valida los datos ingresados.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java de Insertion Sort y la presentación de sus pasos y métricas.
+>
+> **Instrucciones:**
+>
+> 1. Documenta la entrada, el método de ordenamiento, el efecto in-place, el resultado devuelto y el comportamiento ante un arreglo `null`.
+> 2. Explica el invariante del prefijo ordenado y cómo se desplazan los elementos mayores para insertar el valor actual.
+> 3. Define qué cuenta como desplazamiento y aclara que colocar el valor insertado en el hueco no se contabiliza como tal.
+> 4. Describe qué información se muestra: arreglo original, estado después de cada inserción, arreglo final, verificación del orden y contadores.
+> 5. Analiza la complejidad: mejor caso O(n), promedio y peor caso O(n²), espacio auxiliar O(1). Explica la ventaja práctica con arreglos casi ordenados.
+> 6. Documenta los casos de prueba y sus resultados, asegurando que la documentación coincida con el comportamiento real del programa.

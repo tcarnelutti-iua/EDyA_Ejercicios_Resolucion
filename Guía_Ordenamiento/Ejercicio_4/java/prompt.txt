@@ -1,0 +1,46 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un programa Java que ordene alfabéticamente un arreglo de nombres mediante Selection Sort y muestre el proceso.
+>
+> **Instrucciones:**
+>
+> 1. Describe la estrategia: dividir el arreglo en una parte ordenada a la izquierda y una parte desordenada a la derecha; en cada pasada buscar el nombre que va primero alfabéticamente en la parte desordenada e intercambiarlo con el primero de ese tramo.
+> 2. Explica que, al tratarse de textos, no se pueden usar operadores `<` o `>` y debe usarse `compareToIgnoreCase`. Detalla el significado del signo del resultado: negativo si el nombre que lo invoca va antes, cero si ambos textos son iguales ignorando mayúsculas y minúsculas, y positivo si va después.
+> 3. Define la entrada como una cantidad de nombres y sus valores de texto; incluye el ejemplo `{"Lucia", "Ana", "Pedro", "Juan"}`.
+> 4. Especifica que la salida debe mostrar el arreglo original, el estado después de cada pasada y el arreglo ordenado. Menciona que en cada pasada se realiza como máximo un intercambio.
+> 5. Analiza la complejidad: O(n²) en comparaciones (siempre n(n-1)/2) y como máximo n-1 intercambios; espacio auxiliar O(1).
+> 6. Propón criterios de aceptación y casos de prueba: ejemplo desordenado, ya ordenado, orden inverso, vacío, un solo nombre y nombres repetidos; además, verificar que se conserven todos los nombres originales.
+> 7. Entrega un análisis claro y estructurado, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java Selection Sort para ordenar alfabéticamente un arreglo de nombres in-place, mostrando paso a paso su proceso.
+>
+> **Instrucciones:**
+>
+> 1. Implementa el método de ordenamiento con el ciclo externo recorriendo las posiciones 0..n-2 y un ciclo interno que busque el índice del nombre que va primero alfabéticamente en el tramo desordenado.
+> 2. Compara los textos con `compareToIgnoreCase`; actualiza el mínimo solo cuando el candidato devuelve un valor negativo respecto del mínimo provisional. Intercambia el mínimo con la posición actual solo si el índice cambió, contando como máximo un intercambio por pasada.
+> 3. Conserva el arreglo original y registra el estado al finalizar cada pasada y si hubo intercambio, para poder mostrar el proceso. Presenta el original, cada pasada, el arreglo final y los contadores.
+> 4. Incluye el ejemplo `{"Lucia", "Ana", "Pedro", "Juan"}`; debe quedar `{Ana, Juan, Lucia, Pedro}`.
+> 5. Comenta cómo se busca el menor nombre de cada pasada, cómo funciona `compareToIgnoreCase` y cuándo se intercambian elementos.
+> 6. Documenta la complejidad: O(n²) en comparaciones, a lo sumo n-1 intercambios y espacio auxiliar O(1). Rechaza un arreglo `null` o con nombres `null` con error descriptivo y acepta arreglos vacíos o de un solo nombre.
+> 7. Verifica que el resultado quede ordenado alfabéticamente y que conserve todos los nombres originales. Prueba también arreglos ya ordenados, en orden inverso, con repetidos, vacíos, de un solo nombre y con mayúsculas/minúsculas mezcladas. Incluye un modo de prueba automática y, si se solicita entrada por consola, valida los datos ingresados.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java de Selection Sort para nombres y la presentación de sus pasos y métricas.
+>
+> **Instrucciones:**
+>
+> 1. Documenta la entrada, el método de ordenamiento, el efecto in-place, el resultado devuelto y el comportamiento ante un arreglo `null` o con nombres `null`.
+> 2. Explica cómo se busca el mínimo alfabético en cada pasada y el significado del signo devuelto por `compareToIgnoreCase`.
+> 3. Aclara que se realiza como máximo un intercambio por pasada y que, si el mínimo ya está en su posición, no se intercambia nada.
+> 4. Describe qué información se muestra: arreglo original, estado después de cada pasada, arreglo final, verificaciones de orden y de conservación de nombres, y contadores.
+> 5. Analiza la complejidad: O(n²) en comparaciones, a lo sumo n-1 intercambios y espacio auxiliar O(1), comparando brevemente con Bubble Sort.
+> 6. Documenta los casos de prueba y sus resultados, asegurando que la documentación coincida con el comportamiento real del programa.
