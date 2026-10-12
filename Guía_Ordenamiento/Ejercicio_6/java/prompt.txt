@@ -1,0 +1,49 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un programa Java que ordene un arreglo de enteros mediante Quicksort y muestre el proceso partición por partición.
+>
+> **Instrucciones:**
+>
+> 1. Describe la estrategia de divide y vencerás: elegir un pivote, particionar el subarreglo dejando a la izquierda los valores menores o iguales y a la derecha los mayores, ubicar el pivote en su posición definitiva y ordenar recursivamente los subarreglos izquierdo y derecho.
+> 2. Especifica que el pivote es siempre el primer elemento de cada subarreglo.
+> 3. Define el caso base: un subarreglo con cero o un elemento ya está ordenado, por lo que la recursión se detiene.
+> 4. Define la entrada como una cantidad de elementos y sus valores enteros; usa como ejemplo principal `{8, 3, 7, 4, 2, 6, 5, 1}`.
+> 5. Especifica que la salida debe mostrar, en cada partición, el pivote elegido, su posición final y el contenido de los subarreglos izquierdo y derecho resultantes; al finalizar, el arreglo ordenado y la verificación del orden.
+> 6. Analiza las complejidades: tiempo promedio `O(n log n)`, peor caso `O(n²)` (por ejemplo, un arreglo ya ordenado cuando se elige el primer elemento como pivote); espacio de la pila recursiva `O(log n)` en promedio y `O(n)` en el peor caso.
+> 7. Detalla el tratamiento de los valores iguales al pivote: quedan del lado izquierdo (comparación `<=`).
+> 8. Propón criterios de aceptación y casos de prueba: desordenado, ya ordenado, orden inverso, valores repetidos, vacío, un elemento, dos elementos, todos iguales, valores extremos y entrada `null`.
+> 9. Entrega un análisis claro y estructurado, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java Quicksort para ordenar un arreglo de enteros in-place usando siempre el primer elemento como pivote y mostrar paso a paso cada partición.
+>
+> **Instrucciones:**
+>
+> 1. Implementa el esquema divide y vencerás: método recursivo que, sobre un rango `[inicio, fin]`, elige `arreglo[inicio]` como pivote, particiona el rango y luego se llama a sí mismo sobre los subarreglos izquierdo y derecho, excluyendo el pivote.
+> 2. Particiona con dos índices: `i` avanza desde `inicio + 1` saltando los valores `<= pivote` y `j` retrocede desde `fin` saltando los valores `> pivote`; cuando `i < j`, intercambia; al cruzarse, ubica el pivote en `j`. Los valores iguales al pivote quedan a la izquierda.
+> 3. Aplica el caso base: si `inicio >= fin`, el rango ya está ordenado y la recursión se detiene.
+> 4. Conserva el arreglo original y el detalle de cada partición (pivote, posición final, subarreglos izquierdo y derecho, estado y contadores) para poder mostrarlo y verificarlo; cuenta cada comparación e intercambio.
+> 5. Incluye el ejemplo `{8, 3, 7, 4, 2, 6, 5, 1}`; debe quedar ordenado de menor a mayor.
+> 6. Comenta la partición, las llamadas recursivas y cómo cada llamada trabaja sobre subproblemas más pequeños. Documenta las complejidades: tiempo promedio `O(n log n)` y peor caso `O(n²)`; pila recursiva `O(log n)` en promedio y `O(n)` en el peor caso.
+> 7. Rechaza un arreglo `null` con error descriptivo y acepta arreglos vacíos o de un elemento.
+> 8. Verifica los resultados contra un ordenamiento de referencia, comprueba que cada partición trate correctamente los valores iguales al pivote, y prueba arreglos desordenados, ya ordenados, en orden inverso, con repetidos, vacíos, de un elemento y con valores extremos. Incluye un modo de prueba automática y, si se solicita entrada por consola, valida los datos ingresados.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java de Quicksort, su partición de primer pivote y la presentación de sus particiones y métricas.
+>
+> **Instrucciones:**
+>
+> 1. Documenta la entrada, el método de ordenamiento recursivo, el efecto in-place, el resultado devuelto y el comportamiento ante un arreglo `null`.
+> 2. Explica el esquema divide y vencerás, la elección del primer elemento como pivote, la partición con dos índices y la ubicación definitiva del pivote.
+> 3. Define el caso base (subarreglo de cero o un elemento) y explica cómo cada llamada recursiva trabaja sobre subproblemas estrictamente más pequeños.
+> 4. Describe qué información se muestra: arreglo original, pivote y posición final por partición, subarreglos izquierdo y derecho, arreglo ordenado, verificación del orden y contadores.
+> 5. Analiza la complejidad temporal (`O(n log n)` promedio, `O(n²)` peor caso) y espacial (`O(log n)` promedio, `O(n)` peor caso) y por qué el pivote fijo de primer elemento degrada en arreglos ordenados. Aclara que Quicksort no es estable.
+> 6. Documenta los casos de prueba y sus resultados, asegurando que la documentación coincida con el comportamiento real del programa.
