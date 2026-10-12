@@ -1,0 +1,84 @@
+> **Rol:** Agente Analista de Software.
+> 
+> **Tarea:** Realizar el análisis técnico del problema de inversión recursiva de una cadena de texto (`String`).
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Modela los requisitos funcionales y las reglas de negocio especificadas: relación recursiva ($invertir(s) = invertir(s.substring(1)) + s.charAt(0)$), caso base ($longitud(s) \le 1 \to s$), caso recursivo, separación del primer carácter y del resto, y restricción/rechazo de la entrada nula (`null`).
+> 2. Identifica los casos de prueba clave (`invertir("")` $\to ""$, `invertir("a")` $\to "a"$, `invertir("casa")` $\to "asac"$, `invertir("Java")` $\to "avaJ"$, `invertir("reconocer")` $\to "reconocer"$) y define los criterios de aceptación.
+> 3. Analiza el comportamiento esperado de la pila de llamadas (*call stack*): cómo `charAt(0)` aísla el primer carácter, cómo `substring(1)` reduce el problema hasta el caso base y por qué una cadena vacía o de un solo carácter ya está invertida. Establece que la inversión debe preservar mayúsculas y minúsculas y que no se deben usar ciclos.
+> 4. Entrega un informe de análisis de requerimientos claro y estructurado.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+> 
+> **Tarea:** Implementar la función recursiva que invierte una cadena de texto, según las especificaciones acordadas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Escribe la función que acepte un `String` y devuelva una nueva cadena con los caracteres en orden inverso, sin usar ciclos.
+> 2. Incluye validación de entrada para rechazar `null` con un mensaje descriptivo.
+> 3. Implementa explícitamente el caso base (cadena vacía o de un solo carácter, `longitud(s) <= 1`) devolviendo la cadena tal como está, sin realizar llamadas adicionales.
+> 4. Implementa el caso recursivo retornando `invertir(resto) + primerCaracter`, usando `substring(1)` para obtener el resto y `charAt(0)` para aislar el primer carácter.
+> 5. Agrega comentarios detallados dentro del código que expliquen:
+> 
+> 
+> - Dónde se evalúa y ejecuta el caso base.
+> - Dónde se ejecuta el paso recursivo y cómo `charAt(0)` y `substring(1)` reducen la cadena.
+> - Cómo se resuelve la pila de llamadas al retornar desde el caso base (*unwinding*).
+> 6. Incluye las ejecuciones de prueba directas para `invertir("")`, `invertir("a")`, `invertir("casa")`, `invertir("Java")` y `invertir("reconocer")`, comprobando que los resultados coincidan con `""`, `"a"`, `"asac"`, `"avaJ"` y `"reconocer"`, respectivamente.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+> 
+> **Tarea:** Elaborar la documentación técnica completa del componente de inversión recursiva de cadenas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Redacta la especificación de la función: firma, parámetros, tipo de retorno y excepciones/errores en caso de entrada nula (`null`).
+> 2. Explica formalmente la lógica de la función, diferenciando el caso base del caso recursivo.
+> 3. Incluye una traza completa o diagrama textual del flujo de la pila de llamadas para `invertir("casa")`, detallando la fase de apilado (*stack push*) y la fase de resolución/desapilado (*stack pop*).
+> 4. Incluye la tabla de casos de prueba ejecutados (`invertir("")`, `invertir("a")`, `invertir("casa")`, `invertir("Java")`, `invertir("reconocer")`) documentando sus entradas, salidas esperadas y salidas obtenidas.
+
+### Prompt para el Agente Explicador
+
+> **Rol:** Agente Explicador / Tutor Didáctico.
+> 
+> **Tarea:** Explicar el concepto de recursividad y la inversión de cadenas de manera intuitiva y pedagógica.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Explica qué es la recursividad utilizando la relación $invertir(s) = invertir(s.substring(1)) + s.charAt(0)$ de manera conceptual.
+> 2. Utiliza una analogía del mundo real (como una fila de personas que se pasan una tarea hacia adelante y luego la devuelven en orden inverso, o anotar la primera letra en una lista y resolver el resto) para enseñar qué es la pila de llamadas y por qué el caso base es vital para no caer en un bucle infinito.
+> 3. Guía al estudiante paso a paso en el recorrido de `invertir("casa")`:
+> 
+> 
+> - **Fase de ida:** Cómo la cadena se reduce quitando el primer carácter (`substring(1)`) y guardando cada carácter aislado (`charAt(0)`) hasta llegar al caso base (longitud $\le 1$).
+> - **Fase de vuelta:** Cómo se concatenan los caracteres guardados al final del resultado al regresar del caso base hasta obtener `"asac"`.
+> 4. Explica por qué el caso base usa longitud $\le 1$, por qué se rechaza `null`, por qué la profundidad de recursión es a lo sumo la longitud de la cadena y por qué se conservan mayúsculas y minúsculas.
+> 5. Mantén un tono amigable, claro y enfocado en la comprensión conceptual profunda.
+
+explicacion:
+La clase `InvertirCadena` invierte una cadena de texto mediante recursión, sin usar ciclos. El método público valida la entrada y luego llama al método recursivo privado; el valor `null` se rechaza porque no se puede separar en primer carácter y resto.
+
+El caso base se da cuando la longitud de la cadena es 0 o 1. Tanto la cadena vacía como la de un único carácter ya están invertidas, por lo que se devuelven tal cual. Para los demás casos, `charAt(0)` aísla el primer carácter y `substring(1)` obtiene el resto. Así, cada llamada devuelve la inversión del resto seguida del primer carácter.
+
+Por ejemplo, para `invertir("casa")`, la fase de ida reduce la cadena y deja concatenaciones pendientes:
+
+$$invertir("casa") = invertir("asa") + 'c'$$
+$$invertir("asa") = invertir("sa") + 'a'$$
+$$invertir("sa") = invertir("a") + 's'$$
+$$invertir("a") = "a"$$
+
+Al regresar del caso base, se resuelven las llamadas: `invertir("sa")` devuelve `"as"`, `invertir("asa")` devuelve `"asa"` y `invertir("casa")` devuelve `"asac"`. La pila guarda esos caracteres pendientes hasta que se obtiene el resultado de las llamadas más pequeñas; por eso el primer carácter del original termina en la última posición.
+
+La función conserva las mayúsculas y minúsculas porque solo reordena caracteres, sin transformarlos. Además, rechaza `null` con un mensaje descriptivo. El programa prueba cadenas vacías, de un carácter, palíndromos como `"reconocer"` y entradas mixtas con mayúsculas y espacios.
+
+Si la cadena tiene $n$ caracteres, se realizan $O(n)$ llamadas y se usa $O(n)$ espacio en la pila. En cada nivel se crea una subcadena y se concatena un carácter, por lo que el costo de tiempo total es $O(n^2)$ con la concatenación directa; una cadena vacía o de un solo carácter detiene la recursión de inmediato.
+explicacion:
