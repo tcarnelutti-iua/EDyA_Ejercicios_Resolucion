@@ -1,0 +1,137 @@
+> **Rol:** Agente Analista de Software.
+> 
+> **Tarea:** Realizar el análisis técnico del problema de cálculo recursivo de una potencia entera, sin usar `Math.pow`.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Modela los requisitos funcionales y las reglas de negocio especificadas: relación recursiva ($potencia(base, n) = base \times potencia(base, n-1)$), caso base ($n=0 \to 1$, incluida la convención $0^0 = 1$), caso recursivo, y restricción/rechazo de exponentes negativos.
+> 2. Identifica los casos de prueba clave ($(2,0) \to 1$, $(5,1) \to 5$, $(2,4) \to 16$, $(0,5) \to 0$, $(-2,3) \to -8$, $(2,-1) \to$ rechazo) y define los criterios de aceptación.
+> 3. Analiza el comportamiento esperado de la pila de llamadas (*call stack*) y evalúa posibles riesgos de borde (profundidad de recursión, elección del tipo de dato y desbordamiento del rango numérico en potencias grandes).
+> 4. Entrega un informe de análisis de requerimientos claro y estructurado.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+> 
+> **Tarea:** Implementar la función recursiva que calcula una potencia entera sin usar `Math.pow`, según las especificaciones acordadas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Escribe la función que acepte una base entera y un exponente entero, y devuelva la potencia.
+> 2. Implementa la potencia SIN usar `Math.pow`, empleando multiplicaciones sucesivas ($base \times potencia(base, n-1)$).
+> 3. Incluye validación de entrada para rechazar exponentes negativos lanzando una excepción o error descriptivo, ya que no alcanzarían el caso base.
+> 4. Implementa explícitamente el caso base ($exponente == 0$ devuelve $1$, incluyendo $0^0 = 1$) sin realizar llamadas adicionales.
+> 5. Implementa el caso recursivo retornando $base \times potencia(base, exponente - 1)$.
+> 6. Agrega comentarios detallados dentro del código que expliquen:
+> 
+> 
+> - Dónde se evalúa y ejecuta el caso base.
+> - Dónde se ejecuta el paso recursivo y cómo se reduce el exponente.
+> - Cómo se resuelve la pila de llamadas al retornar desde el caso base (*unwinding*).
+> 7. Maneja explícitamente el límite de profundidad recursiva y el desbordamiento del rango numérico, sin aceptar silenciosamente resultados incorrectos.
+> 8. Incluye las ejecuciones de prueba directas para $(2,0)$, $(5,1)$, $(2,4)$, $(0,5)$, $(-2,3)$ y $(2,-1)$, comprobando que los resultados coincidan con los esperados ($1$, $5$, $16$, $0$, $-8$ y rechazo).
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+> 
+> **Tarea:** Elaborar la documentación técnica completa del componente de potencia recursiva.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Redacta la especificación de la función: firma, parámetros, tipo de retorno y excepciones/errores en caso de exponente negativo, fuera de rango de profundidad o con desbordamiento numérico.
+> 2. Explica formalmente la lógica de la función, diferenciando el caso base del caso recursivo y destacando que no se utiliza `Math.pow`.
+> 3. Incluye una traza completa o diagrama textual del flujo de ejecución de la pila de llamadas para el cálculo de $2^4$, detallando tanto la fase de apilado (*stack push*) como la fase de resolución/desapilado (*stack pop*).
+> 4. Explica la convención $0^0 = 1$ y los límites del tipo de dato `long`, mostrando por qué $2^{62}$ cabe pero $2^{63}$ desborda.
+> 5. Incluye la tabla de casos de prueba ejecutados ($(2,0)$, $(5,1)$, $(2,4)$, $(0,5)$, $(-2,3)$, $(2,-1)$) documentando sus entradas, salidas esperadas y salidas obtenidas.
+
+### Prompt para el Agente Explicador
+
+> **Rol:** Agente Explicador / Tutor Didáctico.
+> 
+> **Tarea:** Explicar el concepto de recursividad y la potencia como multiplicaciones repetidas de manera intuitiva y pedagógica.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Explica qué es la recursividad utilizando la relación $potencia(base, n) = base \times potencia(base, n-1)$ de manera conceptual.
+> 2. Utiliza una analogía del mundo real (como doblar repetidamente una hoja de papel o encadenar factores) para enseñar qué es la pila de llamadas y por qué los casos base son vitales para no caer en un bucle infinito.
+> 3. Guía al estudiante paso a paso en el recorrido de calcular $2^4$:
+> 
+> 
+> - **Fase de ida:** Cómo el problema se va reduciendo (disminuyendo el exponente) hasta llegar al caso base ($exponente = 0$).
+> - **Fase de vuelta:** Cómo se resuelven las multiplicaciones acumuladas al regresar del caso base hasta obtener $16$.
+> 4. Explica la convención $0^0 = 1$ y aclara que los tipos numéricos de Java tienen límites finitos, por lo que potencias grandes pueden desbordar.
+> 5. Mantén un tono amigable, claro y enfocado en la comprensión conceptual profunda.
+
+Respuesta de la explicación:
+La potencia recursiva se construye tomando la base y multiplicándola por la potencia de la base con un exponente menor:
+
+$$\text{potencia}(base, n) = base \times \text{potencia}(base, n-1)$$
+
+Elevar una base a un exponente $n$ equivale a multiplicar esa base por sí misma $n$ veces. Piensa en doblar una hoja de papel: el grosor se multiplica por dos en cada doblez, y si quieres saber el grosor tras cuatro dobleces, el resultado depende del grosor tras tres dobleces.
+
+**Cuándo detenerse**
+
+La función necesita un caso base para dejar de llamarse a sí misma. Para la potencia:
+
+- Si $n = 0$, devuelve $1$: cualquier número elevado a cero es $1$. Por convención, esto incluye $0^0 = 1$.
+
+Los exponentes negativos no tienen caso base alcanzable (la reducción $n \to n-1$ se alejaría de cero) y además producirían fracciones, así que se rechazan con un error descriptivo.
+
+**Traza para $2^4$**
+
+La función primero va reduciendo el problema:
+
+$$\text{potencia}(2,4) = 2 \times \text{potencia}(2,3)$$
+$$\text{potencia}(2,3) = 2 \times \text{potencia}(2,2)$$
+$$\text{potencia}(2,2) = 2 \times \text{potencia}(2,1)$$
+$$\text{potencia}(2,1) = 2 \times \text{potencia}(2,0)$$
+$$\text{potencia}(2,0) = 1$$
+
+Al llegar al caso base, las llamadas se resuelven hacia atrás:
+
+$$\text{potencia}(2,1) = 2 \times 1 = 2$$
+$$\text{potencia}(2,2) = 2 \times 2 = 4$$
+$$\text{potencia}(2,3) = 2 \times 4 = 8$$
+$$\text{potencia}(2,4) = 2 \times 8 = 16$$
+
+Esto coincide con la multiplicación manual $2 \times 2 \times 2 \times 2 = 16$.
+
+**Límites numéricos**
+
+Los tipos de Java son finitos: un `long` admite como máximo $9\,223\,372\,036\,854\,775\,807$. Por eso $2^{62}$ se calcula correctamente, pero $2^{63}$ no cabe y se reporta como desbordamiento en lugar de devolver un valor erróneo. Además, como el exponente controla el número de llamadas, un exponente muy grande podría agotar la pila; por eso se limita la profundidad de recursión.
+Respuesta:
+La recursividad resuelve un problema usando una versión más pequeña del mismo. Una potencia sigue esta relación: $potencia(base, n) = base \times potencia(base, n-1)$. Esto representa multiplicar la base por sí misma tantas veces como indica el exponente.
+
+Podemos imaginar una cadena de factores: para calcular $2^4$, colocamos cuatro doses, pero cada llamada deja pendiente multiplicar por un 2 y pregunta por el resultado de la potencia con un exponente menor. La pila de llamadas conserva esas multiplicaciones pendientes hasta que se alcanza el caso base.
+
+**Caso base**
+
+Cuando el exponente es $0$, la función devuelve $1$. Esto funciona porque multiplicar por uno no cambia el producto: por ejemplo, $2^3$ es $2 \times 2^2$, y al continuar se llega a $2^0=1$. En este ejercicio también se define $0^0=1$ por convención. Los exponentes negativos se rechazan, porque al restar uno en cada llamada nunca se llegaría al caso base.
+
+**Traza de $2^4$**
+
+En la fase de ida, cada llamada reduce el exponente y deja una multiplicación pendiente:
+
+$$potencia(2,4) = 2 \times potencia(2,3)$$
+$$potencia(2,3) = 2 \times potencia(2,2)$$
+$$potencia(2,2) = 2 \times potencia(2,1)$$
+$$potencia(2,1) = 2 \times potencia(2,0)$$
+$$potencia(2,0) = 1$$
+
+En la fase de vuelta, la pila se resuelve desde la última llamada hacia la primera:
+
+$$potencia(2,1) = 2 \times 1 = 2$$
+$$potencia(2,2) = 2 \times 2 = 4$$
+$$potencia(2,3) = 2 \times 4 = 8$$
+$$potencia(2,4) = 2 \times 8 = 16$$
+
+Así obtenemos el mismo resultado que al multiplicar manualmente $2 \times 2 \times 2 \times 2 = 16$.
+
+**Límites y costo**
+
+El tipo `long` puede almacenar como máximo $9\,223\,372\,036\,854\,775\,807$. Por eso $2^{62}$ cabe, pero $2^{63}$ excede ese límite y debe detectarse como desbordamiento, en vez de devolver un resultado incorrecto. Además, el exponente determina cuántas llamadas se apilan: el tiempo y el espacio de pila son $O(n)$, y un exponente demasiado grande puede agotar la pila; por eso la implementación establece un límite de profundidad.
