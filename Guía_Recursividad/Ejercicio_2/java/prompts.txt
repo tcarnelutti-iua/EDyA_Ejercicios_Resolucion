@@ -1,0 +1,44 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un algoritmo en Java que busque un entero en un vector desordenado e informe cuántas posiciones examinó.
+>
+> **Instrucciones:**
+>
+> 1. Especifica la búsqueda lineal como estrategia: recorrer el vector desde el índice 0, comparar cada elemento con el valor buscado y detenerse al encontrar la primera coincidencia.
+> 2. Justifica que es una estrategia adecuada para un vector desordenado, ya que no puede descartarse ninguna parte sin examinarla. Explica por qué no conviene ordenar el vector para una búsqueda.
+> 3. Define los resultados requeridos: si se encontró el valor, su índice (o -1 si no está) y la cantidad de posiciones examinadas.
+> 4. Define el conteo: se incrementa una vez por cada elemento comparado; un vector vacío da “no encontrado” y 0 posiciones recorridas.
+> 5. Analiza la complejidad temporal: mejor caso O(1), cuando el valor está en la primera posición; peor caso O(n), cuando está al final o no existe; promedio O(n), suponiendo que el valor existe y su posición es igualmente probable, con (n + 1) / 2 comparaciones esperadas. Si no existe, se examinan n posiciones.
+> 6. Especifica que un vector null debe rechazarse con una excepción descriptiva, y define criterios de aceptación y casos de prueba.
+> 7. Entrega el análisis de forma clara y estructurada, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java una búsqueda lineal de un entero en un vector desordenado, devolviendo el índice de la primera coincidencia y la cantidad de posiciones examinadas.
+>
+> **Instrucciones:**
+>
+> 1. Implementa un método que reciba un `int[]` y el entero que se desea buscar.
+> 2. Rechaza un vector `null` con `IllegalArgumentException` y un mensaje descriptivo. Para un vector vacío, devuelve “no encontrado”, índice -1 y cero posiciones recorridas.
+> 3. Recorre el vector desde el índice 0. Incrementa el contador una vez por cada elemento examinado y retorna inmediatamente al encontrar el valor, informando el índice de su primera aparición.
+> 4. Si el valor no aparece, devuelve “no encontrado”, índice -1 y el total de posiciones recorridas.
+> 5. Comenta el código para explicar la estrategia, el conteo y los casos límite. Explica por qué no se ordena el vector y analiza el mejor caso O(1), el peor caso O(n) y el caso promedio O(n), indicando el supuesto de posición uniforme para el promedio de una búsqueda exitosa.
+> 6. Incluye pruebas para un valor en la primera posición, en una posición intermedia, en la última posición, un valor ausente y un vector vacío. Agrega casos de duplicados, vector de un elemento, valores negativos y vector `null`.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java de búsqueda lineal en un vector desordenado.
+>
+> **Instrucciones:**
+>
+> 1. Documenta el método público: parámetros, resultado, índice de la primera coincidencia y excepción para un vector `null`.
+> 2. Describe qué representa la cantidad de posiciones recorridas y cómo se cuenta; aclara que un vector vacío produce cero posiciones examinadas y resultado “no encontrado”.
+> 3. Explica por qué la búsqueda lineal es adecuada para datos desordenados y por qué no hace falta ordenarlos.
+> 4. Incluye el análisis de complejidad: mejor caso O(1), peor caso O(n) y promedio O(n). Para el promedio de una búsqueda exitosa, indica el supuesto de ubicación uniforme y el valor esperado de (n + 1) / 2 comparaciones; para un valor ausente se recorren n posiciones.
+> 5. Documenta las pruebas y los resultados esperados, manteniendo la explicación consistente con el comportamiento real del código.

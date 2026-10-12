@@ -1,0 +1,45 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos para encontrar el valor mínimo de un vector de números enteros en Java.
+>
+> **Instrucciones:**
+>
+> 1. Describe la estrategia iterativa de recorrer el vector una sola vez y mantener el menor valor encontrado hasta el momento.
+> 2. Justifica por qué, al finalizar el recorrido, el valor provisional es el mínimo del vector.
+> 3. Define las complejidades esperadas: tiempo O(n) y espacio auxiliar O(1).
+> 4. Explica por qué no hace falta ordenar el vector y por qué el recorrido lineal es suficiente para hallar el mínimo.
+> 5. Especifica el comportamiento esperado para un vector nulo o vacío: rechazarlos con una excepción descriptiva, ya que no existe un mínimo que devolver.
+> 6. Propón casos de prueba para valores positivos, valores negativos, elementos repetidos, un solo elemento, un vector vacío y los límites de tipo int.
+> 7. Entrega los requisitos y criterios de aceptación de forma clara y estructurada.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java una función que encuentre el valor mínimo de un vector de enteros, siguiendo estos requisitos.
+>
+> **Instrucciones:**
+>
+> 1. Implementa una función que reciba un `int[]` y devuelva el menor elemento.
+> 2. Valida que el vector no sea `null` ni esté vacío; en cualquiera de esos casos, lanza `IllegalArgumentException` con un mensaje descriptivo.
+> 3. Inicializa el mínimo provisional con el primer elemento y recorre una sola vez los elementos restantes, actualizando el mínimo cuando encuentres un valor menor.
+> 4. Comenta el código para explicar la validación, la inicialización y la actualización del mínimo provisional.
+> 5. Explica en la documentación del código por qué no es necesario ordenar el vector y menciona las complejidades O(n) de tiempo y O(1) de espacio auxiliar.
+> 6. Incluye pruebas para vectores con valores positivos, negativos, repetidos, un elemento y ningún elemento. Agrega también un caso con `Integer.MIN_VALUE` y `Integer.MAX_VALUE`.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java que busca el mínimo de un vector de enteros.
+>
+> **Instrucciones:**
+>
+> 1. Documenta la función, su parámetro, el valor de retorno y la excepción que lanza si el vector es `null` o está vacío.
+> 2. Explica cómo se inicializa el mínimo provisional y cómo se actualiza durante el recorrido.
+> 3. Explica por qué no se necesita ordenar el vector y por qué revisar cada elemento una vez es suficiente.
+> 4. Indica la complejidad temporal O(n) y la complejidad espacial auxiliar O(1).
+> 5. Documenta los casos de prueba y sus resultados esperados, incluidos los casos límite.
+> 6. Mantén la documentación precisa y consistente con el comportamiento real del código; no agregues explicaciones sobre recursividad, ya que la solución es iterativa.
