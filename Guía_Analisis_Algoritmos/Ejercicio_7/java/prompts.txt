@@ -1,0 +1,83 @@
+> **Rol:** Agente Analista de Software.
+> 
+> **Tarea:** Realizar el análisis técnico del problema de suma recursiva de los dígitos de un número entero positivo.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Modela los requisitos funcionales y las reglas de negocio especificadas: relación recursiva ($sumaDigitos(n) = (n \% 10) + sumaDigitos(n / 10)$), caso base ($n < 10 \to n$), caso recursivo y restricción/rechazo de números menores o iguales a cero.
+> 2. Identifica los casos de prueba clave (`sumaDigitos(1)` $\to 1$, `sumaDigitos(7)` $\to 7$, `sumaDigitos(10)` $\to 1$, `sumaDigitos(305)` $\to 8$, `sumaDigitos(999)` $\to 27$, `sumaDigitos(0)` $\to$ rechazo) y define los criterios de aceptación.
+> 3. Analiza el comportamiento esperado de la pila de llamadas (*call stack*): cómo `n % 10` aísla el último dígito, cómo `n / 10` reduce el problema y por qué el 0 nunca se reduce mediante división entera. Evalúa por qué el límite de profundidad es seguro para un tipo `int`.
+> 4. Entrega un informe de análisis de requerimientos claro y estructurado.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+> 
+> **Tarea:** Implementar la función recursiva que suma los dígitos de un número entero positivo, según las especificaciones acordadas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Escribe la función que acepte un entero positivo `n` y devuelva la suma de sus dígitos.
+> 2. Incluye validación de entrada para rechazar valores menores o iguales a cero con un mensaje descriptivo, ya que el 0 nunca se reduce mediante la división entera entre 10.
+> 3. Implementa explícitamente el caso base (`n < 10`) devolviendo `n` sin realizar llamadas adicionales.
+> 4. Implementa el caso recursivo retornando `(n % 10) + sumaDigitos(n / 10)`, usando el módulo para aislar el último dígito y la división entera para descartarlo.
+> 5. Agrega comentarios detallados dentro del código que expliquen:
+> 
+> 
+> - Dónde se evalúa y ejecuta el caso base.
+> - Dónde se ejecuta el paso recursivo y cómo `n % 10` y `n / 10` reducen `n`.
+> - Cómo se resuelve la pila de llamadas al retornar desde el caso base (*unwinding*).
+> 6. Incluye las ejecuciones de prueba directas para `sumaDigitos(1)`, `sumaDigitos(7)`, `sumaDigitos(10)`, `sumaDigitos(305)`, `sumaDigitos(999)` y `sumaDigitos(0)`, comprobando que los resultados coincidan con `1`, `7`, `1`, `8`, `27` y el rechazo, respectivamente.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+> 
+> **Tarea:** Elaborar la documentación técnica completa del componente de suma de dígitos recursivo.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Redacta la especificación de la función: firma, parámetros, tipo de retorno y excepciones/errores en caso de entradas menores o iguales a cero.
+> 2. Explica formalmente la lógica de la función, diferenciando el caso base del caso recursivo.
+> 3. Incluye una traza completa o diagrama textual del flujo de la pila de llamadas para `sumaDigitos(305)`, detallando la fase de apilado (*stack push*) y la fase de resolución/desapilado (*stack pop*).
+> 4. Incluye la tabla de casos de prueba ejecutados (`sumaDigitos(1)`, `sumaDigitos(7)`, `sumaDigitos(10)`, `sumaDigitos(305)`, `sumaDigitos(999)`, `sumaDigitos(0)`) documentando sus entradas, salidas esperadas y salidas obtenidas.
+
+### Prompt para el Agente Explicador
+
+> **Rol:** Agente Explicador / Tutor Didáctico.
+> 
+> **Tarea:** Explicar el concepto de recursividad y la suma de dígitos de manera intuitiva y pedagógica.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Explica qué es la recursividad utilizando la relación $sumaDigitos(n) = (n \% 10) + sumaDigitos(n / 10)$ de manera conceptual.
+> 2. Utiliza una analogía del mundo real (como ir tachando el último dígito de un número escrito en un papel y anotarlo en una lista de sumandos) para enseñar qué es la pila de llamadas y por qué el caso base es vital para no caer en un bucle infinito.
+> 3. Guía al estudiante paso a paso en el recorrido de `sumaDigitos(305)`:
+> 
+> 
+> - **Fase de ida:** Cómo el número se reduce descartando el último dígito (`n / 10`) y guardando cada dígito aislado (`n % 10`) hasta llegar al caso base (`n < 10`).
+> - **Fase de vuelta:** Cómo se suman los dígitos guardados al regresar del caso base hasta obtener `8`.
+> 4. Explica por qué el caso base usa `n < 10`, por qué se rechazan el 0 y los negativos, y por qué la profundidad de recursión es a lo sumo la cantidad de dígitos del número.
+> 5. Mantén un tono amigable, claro y enfocado en la comprensión conceptual profunda.
+
+explicacion:
+La clase `SumaDigitos` calcula la suma de los dígitos de un entero positivo mediante recursión. El método público valida el número y luego llama al método recursivo privado; los valores menores o iguales a cero se rechazan porque no pertenecen al dominio definido para este ejercicio.
+
+El caso base se da cuando `n < 10`. Como la validación garantiza que `n` es positivo, en ese punto queda un único dígito y la función lo devuelve directamente. Para los demás valores, `n % 10` obtiene el último dígito y `n / 10` lo elimina usando división entera. Por eso, cada llamada devuelve el dígito aislado más la suma recursiva de los dígitos restantes.
+
+Por ejemplo, para `sumaDigitos(305)`, la fase de ida reduce el número y deja sumas pendientes:
+
+$$sumaDigitos(305) = 5 + sumaDigitos(30)$$
+$$sumaDigitos(30) = 0 + sumaDigitos(3)$$
+$$sumaDigitos(3) = 3$$
+
+Al regresar del caso base, se resuelven las llamadas: `sumaDigitos(30)` devuelve $0+3=3$ y `sumaDigitos(305)` devuelve $5+3=8$. La pila guarda esos dígitos pendientes hasta que se obtiene el resultado de las llamadas más pequeñas.
+
+El método `parsear` convierte texto a entero y rechaza texto vacío, no numérico o fuera del rango de `int`. La función también rechaza el cero: como `0 / 10` sigue siendo `0`, no alcanzaría el caso base `n < 10` de la manera prevista para números positivos. El programa prueba entradas válidas, entradas inválidas y `Integer.MAX_VALUE`, cuya suma de dígitos es `46`.
+
+Si el número tiene $d$ dígitos, se realizan $O(d)$ llamadas y se usa $O(d)$ espacio en la pila. Para un entero positivo de tipo `int`, la profundidad máxima es de diez llamadas, porque el mayor valor positivo tiene diez dígitos.
+
