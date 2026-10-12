@@ -1,0 +1,24 @@
+Quiero implementar en Java MergeSort para ordenar un arreglo de números enteros
+de menor a mayor y mostrar paso a paso cómo funciona.
+
+Usá el enfoque de divide y vencerás:
+
+- Dividir: separá recursivamente el arreglo en dos subarreglos, aproximadamente
+  del mismo tamaño. Mostrá el contenido de cada parte y su nivel de recursión.
+- Condición de corte: cuando un subarreglo tenga cero o un elemento, mostralo
+  como caso base; ya está ordenado y no necesita dividirse más.
+- Fusionar: combiná los subarreglos ordenados en uno solo, comparando sus
+  primeros elementos disponibles y tomando el menor en cada paso. Mostrá el
+  resultado de cada fusión.
+
+Explicá claramente que dividir descompone el problema en partes más pequeñas,
+mientras que fusionar combina las soluciones de esas partes para construir el
+arreglo ordenado.
+
+Incluí comentarios que distingan las llamadas recursivas de la lógica de fusión.
+El programa debe mostrar el arreglo original y el resultado final. Analizá la
+complejidad temporal O(n log n) y el espacio auxiliar O(n).
+
+Probá un arreglo desordenado, uno ya ordenado, uno en orden inverso, uno con
+valores repetidos, uno vacío y uno de un solo elemento. Verificá que cada
+resultado quede ordenado y conserve los valores originales.
