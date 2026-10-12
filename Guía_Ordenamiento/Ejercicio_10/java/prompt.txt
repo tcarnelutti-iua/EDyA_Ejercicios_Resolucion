@@ -1,0 +1,24 @@
+Quiero implementar en Java un programa que ordene un arreglo de jugadores por
+puntaje, de mayor a menor. Cada jugador tiene un nombre y un puntaje entero.
+Usá como ejemplo:
+
+- Jugador("Ana", 1200)
+- Jugador("Pedro", 900)
+- Jugador("Lucia", 1500)
+
+Elegí MergeSort y justificá la elección: ofrece tiempo O(n log n), por lo que
+resulta adecuado cuando el ranking puede contener muchos jugadores. Además, es
+estable; si dos jugadores tienen el mismo puntaje, conserva entre ellos el orden
+original. Indicá también su desventaja: necesita O(n) de espacio auxiliar.
+
+Implementá el ordenamiento comparando los puntajes de mayor a menor. Si hay
+empate, mantené el orden original de esos jugadores. Evitá comparar restando
+puntajes, para no correr riesgos de desbordamiento.
+
+Mostrá el arreglo original y el ranking ordenado, con nombre y puntaje de cada
+jugador. Incluí comentarios que expliquen la estrategia de dividir y fusionar,
+cómo se comparan los puntajes y por qué se preserva el orden en caso de empate.
+
+Verificá el resultado con jugadores en distintos órdenes, puntajes repetidos, un
+solo jugador y un arreglo vacío. Comprobá que el ranking quede de mayor a menor y
+que los empates conserven su orden original.
