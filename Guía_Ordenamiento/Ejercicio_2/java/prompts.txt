@@ -1,0 +1,60 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos para implementar en Java dos métodos que ordenan un arreglo de enteros — `bubbleSort(int[] array)` y `selectionSort(int[] array)` — y permiten comparar sus operaciones.
+>
+> **Instrucciones:**
+>
+> 1. Explica Bubble Sort: comparar elementos vecinos e intercambiarlos cuando estén en orden incorrecto; el mayor del tramo no ordenado se desplaza al final en cada pasada.
+> 2. Explica Selection Sort: buscar el menor del tramo no ordenado e intercambiarlo con el primero de ese tramo; como máximo un intercambio por pasada.
+> 3. Define los contadores: una comparación es cada comparación entre valores; un intercambio es solo cada cambio efectivo de posiciones. Explica qué mide cada uno y cómo difieren las estrategias.
+> 4. Indica que ambos métodos deben recibir copias del mismo arreglo original porque ordenan in-place, y que deben mostrar el arreglo ordenado y los contadores.
+> 5. Indica la complejidad: ambos O(n²) temporal; Selection Sort hace como máximo n - 1 intercambios; Bubble Sort puede hacer muchos más.
+> 6. Define los criterios de aceptación: ambos métodos deben ordenar correctamente copias del mismo arreglo (orden no decreciente) y los contadores deben ser los esperados.
+> 7. Identifica casos límite: desordenado, ya ordenado, orden inverso, con repetidos, vacío, un elemento, todos iguales, valores extremos y entrada null.
+> 8. Entrega un análisis estructurado sin implementar el código.
+
+### Prompt para el Agente Planificador
+
+> **Rol:** Agente Planificador de Software.
+>
+> **Tarea:** Diseñar la organización del proyecto y el plan técnico para implementar en Java la comparación entre Bubble Sort y Selection Sort.
+>
+> **Instrucciones:**
+>
+> 1. Define la estructura de carpetas del ejercicio (`java/`) y el nombre de la clase.
+> 2. Separa el algoritmo (métodos `bubbleSort` y `selectionSort` que ordenan in-place y devuelven un resultado con contadores) de la presentación (método que imprime), para poder probar sin consola.
+> 3. Modela un resultado que conserve el algoritmo aplicado, el original, el ordenado, las pasadas y los contadores.
+> 4. Establece un flujo interactivo (leer cantidad y valores) y un modo de ejecución de la comparación con casos de prueba.
+> 5. Enumera los casos de prueba, los contadores esperados y las verificaciones asociadas.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java `bubbleSort(int[] array)` y `selectionSort(int[] array)` para ordenar un arreglo de enteros de menor a mayor y comparar sus operaciones.
+>
+> **Instrucciones:**
+>
+> 1. Recibir una copia del mismo arreglo original en cada método porque ordenan in-place; mostrar el arreglo ordenado y la cantidad de comparaciones e intercambios de cada uno.
+> 2. Bubble Sort: comparar adyacentes e intercambiar cuando estén en orden incorrecto; reducir el tramo en cada pasada y cortar si una pasada no produce cambios.
+> 3. Selection Sort: buscar el menor del tramo no ordenado e intercambiarlo con el primero; un único intercambio por pasada (como máximo n - 1).
+> 4. Contabilizar como comparación cada comparación entre valores y como intercambio solo cada cambio efectivo de posiciones; comentar qué mide cada contador y cómo difieren las estrategias.
+> 5. Verificar que ambos métodos ordenen correctamente (orden no decreciente) copias del mismo arreglo.
+> 6. Incluir pruebas para desordenado, ya ordenado, orden inverso, con repetidos y vacío, mostrando resultados y contadores comparados.
+> 7. Manejar casos límite: arreglo null (excepción descriptiva), vacío y de un elemento (sin pasadas).
+
+### Prompt para el Agente Tester
+
+> **Rol:** Agente Tester / QA de Software.
+>
+> **Tarea:** Validar la implementación de `bubbleSort` y `selectionSort` con contadores de operaciones.
+>
+> **Instrucciones:**
+>
+> 1. Diseñar casos de prueba para arreglos desordenado, ya ordenado, en orden inverso, con repetidos, vacío, de un elemento, todos iguales y con valores extremos de int.
+> 2. Comprobar que ambos métodos ordenen correctamente (orden no decreciente) copias del mismo arreglo y produzcan el mismo resultado ordenado.
+> 3. Verificar los contadores esperados de comparaciones e intercambios para cada algoritmo y cada caso.
+> 4. Validar la diferencia esperada: Selection Sort nunca supera n - 1 intercambios; Bubble Sort puede acumular muchos más.
+> 5. Validar el rechazo de una entrada `null` con una excepción descriptiva en ambos métodos.
