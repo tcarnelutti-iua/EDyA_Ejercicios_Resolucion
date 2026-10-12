@@ -67,7 +67,6 @@
 > 5. Mantén un tono amigable, claro y enfocado en la comprensión conceptual profunda.
 
 Respuesta de la explicación: 
-
 La suma recursiva se construye tomando el número actual y sumándole la suma de todos los anteriores:
 
 $$\text{suma}(n) = n + \text{suma}(n-1)$$

@@ -1,0 +1,94 @@
+> **Rol:** Agente Analista de Software.
+> 
+> **Tarea:** Realizar el análisis técnico del problema de multiplicación recursiva de dos enteros no negativos mediante sumas repetidas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Modela los requisitos funcionales y las reglas de negocio especificadas: relación recursiva ($multiplicar(a, b) = a + multiplicar(a, b-1)$), caso base (cuando alguno de los factores es $0$), caso recursivo, restricción de no usar el operador `*` y rechazo de números negativos.
+> 2. Identifica los casos de prueba clave ($(0,5) \to 0$, $(5,0) \to 0$, $(1,4) \to 4$, $(3,4) \to 12$, $(6,2) \to 12$) y define los criterios de aceptación.
+> 3. Analiza el comportamiento esperado de la pila de llamadas (*call stack*) y evalúa posibles riesgos de borde (profundidad de recursión y desbordamiento del rango numérico del producto).
+> 4. Entrega un informe de análisis de requerimientos claro y estructurado.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+> 
+> **Tarea:** Implementar la función recursiva que multiplica dos enteros no negativos mediante sumas repetidas según las especificaciones acordadas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Escribe la función que acepte dos enteros no negativos $a$ y $b$ y devuelva su producto.
+> 2. Implementa la multiplicación SIN usar el operador `*`, empleando únicamente sumas.
+> 3. Incluye validación de entrada para rechazar números negativos lanzando una excepción o error descriptivo.
+> 4. Implementa explícitamente el caso base (si $a = 0$ o $b = 0$, devolver $0$) sin realizar llamadas adicionales.
+> 5. Implementa el caso recursivo retornando $a + multiplicar(a, b - 1)$.
+> 6. Agrega comentarios detallados dentro del código que expliquen:
+> 
+> 
+> - Dónde se evalúa y ejecuta el caso base.
+> - Dónde se ejecuta el paso recursivo.
+> - Cómo se resuelve la pila de llamadas al retornar desde el caso base (*unwinding*).
+> 7. Maneja explícitamente el límite de profundidad recursiva, sin aceptar silenciosamente resultados incorrectos ni desbordamientos de pila.
+> 8. Incluye las ejecuciones de prueba directas para $(0,5)$, $(5,0)$, $(1,4)$, $(3,4)$ y $(6,2)$, comprobando que los resultados coincidan con los esperados ($0$, $0$, $4$, $12$ y $12$).
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+> 
+> **Tarea:** Elaborar la documentación técnica completa del componente de multiplicación recursiva.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Redacta la especificación de la función: firma, parámetros, tipo de retorno y excepciones/errores en caso de entradas negativas o fuera de rango de profundidad.
+> 2. Explica formalmente la lógica de la función, diferenciando el caso base del caso recursivo y destacando que no se utiliza el operador `*`.
+> 3. Incluye una traza completa o diagrama textual del flujo de ejecución de la pila de llamadas para el cálculo de $3 \times 4$, detallando tanto la fase de apilado (*stack push*) como la fase de resolución/desapilado (*stack pop*).
+> 4. Explica la optimización por conmutatividad (usar el menor de los factores como contador) y su efecto sobre la profundidad de la pila.
+> 5. Incluye la tabla de casos de prueba ejecutados ($(0,5)$, $(5,0)$, $(1,4)$, $(3,4)$, $(6,2)$) documentando sus entradas, salidas esperadas y salidas obtenidas.
+
+### Prompt para el Agente Explicador
+
+> **Rol:** Agente Explicador / Tutor Didáctico.
+> 
+> **Tarea:** Explicar el concepto de recursividad y la multiplicación como sumas repetidas de manera intuitiva y pedagógica.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Explica qué es la recursividad utilizando la relación $multiplicar(a, b) = a + multiplicar(a, b-1)$ de manera conceptual.
+> 2. Utiliza una analogía del mundo real (como una fila de cajas que se van apilando o varias compras de un mismo precio que se suman) para enseñar qué es la pila de llamadas y por qué el caso base es vital para no caer en un bucle infinito.
+> 3. Guía al estudiante paso a paso en el recorrido de calcular $3 \times 4$:
+> 
+> 
+> - **Fase de ida:** Cómo el problema se va reduciendo (disminuyendo el contador) hasta llegar al caso base ($veces = 0$).
+> - **Fase de vuelta:** Cómo se resuelven las sumas acumuladas al regresar del caso base hasta obtener $12$.
+> 4. Menciona por qué la conmutatividad permite elegir el menor de los factores como contador y cómo eso reduce el trabajo y el uso de la pila.
+> 5. Mantén un tono amigable, claro y enfocado en la comprensión conceptual profunda.
+
+Respuesta: 
+La recursividad consiste en resolver un problema mediante una versión más pequeña del mismo problema. En la multiplicación, $a$ por $b$ puede entenderse como sumar $a$ un total de $b$ veces: $multiplicar(a, b) = a + multiplicar(a, b-1)$.
+
+Imagina que compras cuatro cajas y cada caja contiene tres lápices. Para saber cuántos lápices tienes, puedes sumar tres lápices por cada caja. Cada llamada recursiva representa una caja pendiente; la pila de llamadas guarda esas sumas pendientes mientras el contador disminuye.
+
+El caso base ocurre cuando uno de los factores vale $0$. Si el contador es cero, no quedan grupos por sumar y el resultado es $0$. Este caso es esencial: detiene las llamadas; sin él, el contador seguiría reduciéndose y la función no terminaría correctamente.
+
+**Traza de $3 \times 4$**
+
+En la fase de ida, se reduce el segundo factor en cada llamada:
+
+$$multiplicar(3,4)=3+multiplicar(3,3)$$
+$$multiplicar(3,3)=3+multiplicar(3,2)$$
+$$multiplicar(3,2)=3+multiplicar(3,1)$$
+$$multiplicar(3,1)=3+multiplicar(3,0)$$
+$$multiplicar(3,0)=0$$
+
+En la fase de vuelta, se resuelven las sumas que quedaron pendientes:
+
+$$multiplicar(3,1)=3+0=3$$
+$$multiplicar(3,2)=3+3=6$$
+$$multiplicar(3,3)=3+6=9$$
+$$multiplicar(3,4)=3+9=12$$
+
+La conmutatividad permite cambiar el orden de los factores: $3 \times 4 = 4 \times 3$. Así se puede sumar el factor mayor menos veces y usar el factor menor como contador. Para este ejemplo, $multiplicar(4,3)$ suma cuatro tres veces y necesita menos llamadas que $multiplicar(3,4)$. En general, usar el menor factor como contador reduce la profundidad de la pila de $O(b)$ a $O(\min(a,b))$, siempre que la función ordene los factores antes de iniciar la recursión.
