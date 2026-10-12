@@ -1,0 +1,58 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos para ordenar un arreglo de enteros de menor a mayor con Bubble Sort, mostrando el estado al finalizar cada pasada.
+>
+> **Instrucciones:**
+>
+> 1. Describe el algoritmo: comparar elementos adyacentes, intercambiarlos cuando estén en orden incorrecto y repetir pasadas reduciendo el tramo comparado, porque el mayor de cada tramo queda al final.
+> 2. Indica que se deben mostrar el arreglo original y el estado tras cada pasada (con su número), y justificar por qué el mayor elemento termina al final de cada pasada.
+> 3. Aclara que se realizan hasta n-1 pasadas y que, si el arreglo tiene menos de dos elementos, no hacen falta pasadas.
+> 4. Define los criterios de aceptación: el resultado debe quedar en orden no decreciente y las pasadas mostradas deben corresponder a los cambios realmente realizados.
+> 5. Identifica casos límite: desordenado, ya ordenado, orden inverso, con repetidos y vacío.
+> 6. Entrega un análisis estructurado sin implementar el código.
+
+### Prompt para el Agente Planificador
+
+> **Rol:** Agente Planificador de Software.
+>
+> **Tarea:** Diseñar la organización del proyecto y el plan técnico para la implementación en Java de Bubble Sort con visualización por pasadas.
+>
+> **Instrucciones:**
+>
+> 1. Define la estructura de carpetas del ejercicio (`java/`) y el nombre de la clase.
+> 2. Separa el algoritmo (método que ordena in-place y devuelve un resultado) de la presentación (método que imprime), para poder probar sin consola.
+> 3. Modela un resultado que conserve el original, los estados por pasada, las marcas de cambio y los contadores.
+> 4. Establece el flujo interactivo (leer cantidad y valores) y un modo de ejecución de pruebas.
+> 5. Enumera los casos de prueba y las verificaciones asociadas.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java Bubble Sort para ordenar un arreglo de enteros de menor a mayor mostrando el estado al finalizar cada pasada.
+>
+> **Instrucciones:**
+>
+> 1. Leer la cantidad de elementos y luego los valores del arreglo desde la entrada estándar.
+> 2. Mostrar el arreglo original antes de ordenar y el estado tras cada pasada, indicando el número de pasada.
+> 3. Comparar adyacentes e intercambiar cuando el de la izquierda sea mayor que el de la derecha; reducir el tramo en cada pasada.
+> 4. Realizar hasta n-1 pasadas y, si el arreglo tiene menos de dos elementos, indicar que no hacen falta pasadas.
+> 5. Comentar cada ciclo, cuándo se intercambia y por qué el mayor queda al final de cada pasada.
+> 6. Verificar que el resultado quede en orden no decreciente y que las pasadas mostradas correspondan a los cambios realizados.
+> 7. Incluir pruebas para un arreglo desordenado, ya ordenado, en orden inverso, con repetidos y vacío, comprobando las pasadas mostradas y el resultado final.
+
+### Prompt para el Agente Tester
+
+> **Rol:** Agente Tester / QA de Software.
+>
+> **Tarea:** Validar la implementación de Bubble Sort con visualización por pasadas.
+>
+> **Instrucciones:**
+>
+> 1. Diseñar casos de prueba para arreglos desordenado, ya ordenado, en orden inverso, con repetidos, vacío y de un elemento.
+> 2. Comprobar que el arreglo final esté en orden no decreciente.
+> 3. Comprobar que la cantidad y el contenido de las pasadas mostradas coincidan con los cambios realmente efectuados.
+> 4. Verificar los contadores de comparaciones e intercambios esperados.
+> 5. Validar el rechazo de una entrada `null` con una excepción descriptiva.
