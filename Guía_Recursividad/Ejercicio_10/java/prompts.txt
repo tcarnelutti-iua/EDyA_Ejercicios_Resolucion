@@ -1,0 +1,46 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos para ordenar un vector de enteros con Bubble Sort e informar comparaciones e intercambios.
+>
+> **Instrucciones:**
+>
+> 1. Describe el algoritmo: comparar elementos adyacentes, intercambiarlos cuando estén en orden incorrecto y repetir pasadas hasta ordenar el vector.
+> 2. Explica que Bubble Sort es apropiado principalmente con fines didácticos o para conjuntos pequeños, debido a su simplicidad, pero no para conjuntos grandes por su tiempo O(n²) promedio y en el peor caso.
+> 3. Considera la variante in-place con finalización anticipada: si una pasada completa no realiza intercambios, el vector ya está ordenado.
+> 4. Define las métricas: contar cada comparación entre elementos adyacentes y cada intercambio que efectivamente se realice.
+> 5. Analiza la complejidad temporal: mejor caso O(n) con corte anticipado; promedio y peor caso O(n²). El espacio auxiliar es O(1).
+> 6. Identifica casos límite, estabilidad y criterios de aceptación. Considera vectores ordenados, invertidos, con duplicados, vacíos, de un elemento y `null`.
+> 7. Entrega un análisis estructurado sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java Bubble Sort para ordenar un vector de enteros de menor a mayor e informar la cantidad de comparaciones e intercambios.
+>
+> **Instrucciones:**
+>
+> 1. Ordena el vector recibido in-place, comparando elementos adyacentes e intercambiándolos cuando el de la izquierda sea mayor que el de la derecha.
+> 2. Reduce el tramo examinado en cada pasada, porque los mayores elementos van quedando en sus posiciones definitivas al final.
+> 3. Implementa una bandera de intercambio para finalizar anticipadamente si una pasada completa no realiza intercambios.
+> 4. Cuenta cada comparación entre elementos adyacentes y cada intercambio realizado. Usa contadores `long` para evitar desbordamientos en entradas grandes y devuelve ambas métricas en un resultado claro.
+> 5. Rechaza un vector `null` con `IllegalArgumentException` descriptiva. Los vectores vacíos y de un elemento deben aceptarse y reportar cero comparaciones e intercambios.
+> 6. Comenta el código y documenta las complejidades: mejor caso O(n), promedio y peor caso O(n²), espacio auxiliar O(1). Indica que Bubble Sort es principalmente didáctico o adecuado para conjuntos pequeños.
+> 7. Incluye pruebas para un vector desordenado, ya ordenado, en orden inverso, con repetidos, vacío y de un elemento; verifica el vector final y los contadores esperados.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java de Bubble Sort con finalización anticipada y métricas de ejecución.
+>
+> **Instrucciones:**
+>
+> 1. Documenta el método público, el efecto in-place sobre el vector, el resultado de estadísticas y el comportamiento ante un vector `null`.
+> 2. Explica el proceso de las pasadas, la comparación de elementos adyacentes, los intercambios y la reducción del tramo interno.
+> 3. Describe cómo funciona la bandera de finalización anticipada y qué mide cada contador. Aclara que una comparación se cuenta por cada par evaluado y un intercambio solo cuando se cambia el orden de dos elementos.
+> 4. Expone las complejidades: mejor caso O(n) si el vector ya está ordenado, promedio y peor caso O(n²), y espacio auxiliar O(1).
+> 5. Explica por qué Bubble Sort se recomienda principalmente con fines didácticos o para conjuntos pequeños, y documenta su estabilidad cuando solo intercambia elementos si el izquierdo es estrictamente mayor.
+> 6. Documenta los casos de prueba y sus resultados, manteniendo la información coherente con el comportamiento real del código.
