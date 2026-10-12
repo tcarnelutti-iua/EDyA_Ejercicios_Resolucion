@@ -1,0 +1,45 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un algoritmo Java que encuentre el mayor elemento de una matriz rectangular de enteros.
+>
+> **Instrucciones:**
+>
+> 1. Define la entrada como una matriz rectangular de enteros y el resultado como el mayor valor contenido en ella.
+> 2. Describe la estrategia: recorrer la matriz fila por fila manteniendo en una variable `maximo` el mayor valor encontrado hasta el momento e inicializándola con la primera celda.
+> 3. Justifica que se deben examinar todas las celdas: al no existir un orden en los datos, ninguna posición puede descartarse y cualquier celda aún no visitada podría ser el máximo.
+> 4. Explica por qué inicializar `maximo` con la primera celda (y no con 0 o `Integer.MIN_VALUE`) garantiza el resultado correcto cuando todos los valores son negativos o cuando aparece `Integer.MIN_VALUE`.
+> 5. Analiza la complejidad temporal como O(filas × columnas), ya que cada celda se examina una vez, y la complejidad espacial auxiliar como O(1), porque solo se usa la variable del máximo y los índices del recorrido.
+> 6. Define los casos límite: una matriz `null`, una matriz sin filas, una matriz sin columnas y las filas `null` o no rectangulares se rechazan con `IllegalArgumentException` descriptiva, porque no existe un máximo en un conjunto vacío.
+> 7. Propón criterios de aceptación y casos de prueba (valores positivos, negativos, repetidos y sin elementos) y presenta el análisis sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java un algoritmo que devuelva el mayor elemento de una matriz rectangular de enteros.
+>
+> **Instrucciones:**
+>
+> 1. Implementa un método que reciba `int[][]` y devuelva el mayor valor (`int`).
+> 2. Rechaza una matriz `null`, una matriz sin filas, una matriz sin columnas, cualquier fila `null` y una matriz no rectangular con `IllegalArgumentException` y un mensaje descriptivo.
+> 3. Inicializa el máximo provisional con la primera celda `matriz[0][0]` tras validar que hay elementos.
+> 4. Recorre la matriz fila por fila con dos bucles y actualiza el máximo cuando la celda actual sea mayor.
+> 5. Comenta el código para explicar la estrategia, la inicialización y por qué se deben revisar todas las celdas.
+> 6. Documenta el costo O(filas × columnas) temporal y O(1) espacial auxiliar.
+> 7. Incluye pruebas de una matriz con valores positivos, una con valores negativos, una con valores repetidos y los casos sin elementos (`null`, sin filas, sin columnas). Agrega casos de una sola celda, valores mixtos, una fila y los extremos de `int`.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar el algoritmo Java que encuentra el mayor elemento de una matriz rectangular de enteros.
+>
+> **Instrucciones:**
+>
+> 1. Documenta el método público, su parámetro, el valor de retorno y la excepción para entradas sin elementos.
+> 2. Explica el recorrido fila por fila, la inicialización del máximo con la primera celda y por qué se examinan todas las celdas.
+> 3. Indica el costo temporal O(filas × columnas) y el espacio auxiliar O(1).
+> 4. Especifica el comportamiento de una matriz `null`, sin filas o sin columnas, y de las filas `null` o no rectangulares.
+> 5. Documenta los casos de prueba y sus resultados esperados, manteniendo la documentación fiel a la implementación.
