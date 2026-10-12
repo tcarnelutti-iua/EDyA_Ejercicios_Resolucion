@@ -1,0 +1,46 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un algoritmo Java que sume todos los elementos de una matriz rectangular de enteros y reporte métricas del recorrido.
+>
+> **Instrucciones:**
+>
+> 1. Define la entrada como una matriz rectangular de enteros y el resultado como la suma total, la cantidad de celdas visitadas y la cantidad de operaciones de suma.
+> 2. Describe el recorrido fila por fila: el bucle externo avanza por filas y el interno por columnas; cada celda se acumula en la suma.
+> 3. Distingue las métricas: `celdasVisitadas` cuenta cada posición leída y `operacionesSuma` cuenta cada adición al acumulador. En esta solución coinciden numéricamente, pero representan conceptos distintos.
+> 4. Analiza el costo del recorrido como O(filas × columnas) y el espacio auxiliar como O(1). Considera también que la validación de rectangularidad recorre las filas, con costo O(filas); si hay columnas, el recorrido total se expresa como O(filas × columnas).
+> 5. Define los casos límite: una matriz sin filas o sin columnas devuelve suma 0 y ambos contadores en 0; una matriz `null`, una fila `null` o una matriz no rectangular se rechazan con `IllegalArgumentException` descriptiva.
+> 6. Señala el posible desbordamiento de `int` al sumar valores grandes y recomienda `long` si el rango de resultados pudiera exceder `int`.
+> 7. Propón criterios de aceptación y casos de prueba, y presenta el análisis de forma clara sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java un algoritmo que calcule la suma de todos los elementos de una matriz rectangular de enteros y reporte el conteo de celdas y sumas.
+>
+> **Instrucciones:**
+>
+> 1. Implementa un método que reciba `int[][]` y devuelva un objeto resultado con la suma, las celdas visitadas y las operaciones de suma realizadas.
+> 2. Rechaza una matriz `null`, cualquier fila `null` o una matriz no rectangular con `IllegalArgumentException` y un mensaje descriptivo.
+> 3. Trata una matriz sin filas y una matriz con filas vacías como válidas: devuelve suma 0, celdas visitadas 0 y operaciones de suma 0.
+> 4. Recorre la matriz fila por fila usando dos bucles. Por cada celda, incrementa `celdasVisitadas`, acumula el valor en la suma e incrementa `operacionesSuma`.
+> 5. Comenta el código para explicar qué mide cada contador y por qué ambos coinciden en esta implementación.
+> 6. Documenta el costo del recorrido O(filas × columnas), el costo O(filas) de validar las filas y el espacio auxiliar O(1). Menciona que el acumulador `int` puede desbordarse y cuándo sería conveniente usar `long`.
+> 7. Incluye pruebas de una matriz con varios valores, valores negativos, una sola celda, matriz sin filas, matriz sin columnas, una fila nula, matriz no rectangular y matriz `null`. Verifica la suma y ambos contadores.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar el algoritmo Java que suma una matriz e informa métricas de las operaciones realizadas.
+>
+> **Instrucciones:**
+>
+> 1. Documenta el método de suma, el parámetro, el objeto resultado y los campos que este contiene.
+> 2. Explica el recorrido fila por fila y la función de los contadores `celdasVisitadas` y `operacionesSuma`.
+> 3. Indica que la suma se calcula examinando cada celda, con costo O(filas × columnas), y que el espacio auxiliar es O(1). Documenta también el costo de la validación de filas, O(filas).
+> 4. Especifica el comportamiento de matrices vacías o sin columnas y las excepciones para una matriz `null`, filas `null` o matrices no rectangulares.
+> 5. Explica el posible desbordamiento del acumulador `int` y la alternativa de usar `long` cuando el rango de la suma lo requiera.
+> 6. Documenta los casos de prueba y sus resultados esperados, manteniendo la documentación fiel a la implementación.
