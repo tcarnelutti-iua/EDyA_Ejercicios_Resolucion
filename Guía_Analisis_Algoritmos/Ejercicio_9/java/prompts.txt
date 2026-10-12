@@ -1,0 +1,93 @@
+> **Rol:** Agente Analista de Software.
+> 
+> **Tarea:** Realizar el análisis técnico del problema de verificación recursiva de palíndromos en una cadena de texto (`String`).
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Modela los requisitos funcionales y las reglas de negocio especificadas: relación recursiva ($esPalindromo(s) = (s.primero = s.último)\ \land\ esPalindromo(parteCentral(s))$), caso base ($longitud(s) \le 1 \to true$), caso recursivo, comparación del primer carácter con el último, reducción del problema eliminando ambos extremos y restricción/rechazo de la entrada nula (`null`).
+> 2. Identifica los casos de prueba clave (`esPalindromo("")` $\to true$, `esPalindromo("a")` $\to true$, `esPalindromo("reconocer")` $\to true$, `esPalindromo("radar")` $\to true$, `esPalindromo("hola")` $\to false$, `esPalindromo("Radar")` $\to false$, `esPalindromo(null)` $\to$ rechazo) y define los criterios de aceptación.
+> 3. Analiza el comportamiento esperado de la pila de llamadas (*call stack*): cómo la comparación de extremos reduce el problema hasta el caso base, por qué una cadena vacía o de un solo carácter ya es palíndroma y por qué la comparación debe ser exacta (sensible a mayúsculas y minúsculas). Establece que no se deben usar ciclos.
+> 4. Entrega un informe de análisis de requerimientos claro y estructurado.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+> 
+> **Tarea:** Implementar la función recursiva que determina si una palabra es palíndromo, según las especificaciones acordadas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Escribe la función que acepte un `String` y devuelva `true` o `false` indicando si la palabra se lee igual en ambos sentidos, sin usar ciclos.
+> 2. Incluye validación de entrada para rechazar `null` con un mensaje descriptivo.
+> 3. Implementa explícitamente el caso base (cadena de longitud 0 o 1, `longitud(s) <= 1`) devolviendo `true`, sin realizar llamadas adicionales.
+> 4. Implementa el caso recursivo comparando el primer carácter con el último; si son distintos, devuelve `false` de inmediato, y si coinciden, reduce el problema eliminando ambos extremos y vuelve a comprobar la parte central.
+> 5. Compara los caracteres exactamente, distinguiendo mayúsculas de minúsculas.
+> 6. Agrega comentarios detallados dentro del código que expliquen:
+> 
+> 
+> - Dónde se evalúa y ejecuta el caso base.
+> - Dónde se ejecuta el paso recursivo y cómo la comparación de extremos reduce la cadena hacia el centro.
+> - Cómo se resuelve la pila de llamadas al retornar desde el caso base (*unwinding*).
+> 7. Incluye las ejecuciones de prueba directas para `esPalindromo("")`, `esPalindromo("a")`, `esPalindromo("reconocer")`, `esPalindromo("radar")`, `esPalindromo("hola")`, `esPalindromo("Radar")` y `esPalindromo(null)`, comprobando que los resultados coincidan con `true`, `true`, `true`, `true`, `false`, `false` y el rechazo de la entrada, respectivamente.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+> 
+> **Tarea:** Elaborar la documentación técnica completa del componente de verificación recursiva de palíndromos.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Redacta la especificación de la función: firma, parámetros, tipo de retorno y excepciones/errores en caso de entrada nula (`null`).
+> 2. Explica formalmente la lógica de la función, diferenciando el caso base del caso recursivo.
+> 3. Incluye una traza completa o diagrama textual del flujo de la pila de llamadas para `esPalindromo("radar")`, detallando la fase de apilado (*stack push*) y la fase de resolución/desapilado (*stack pop*).
+> 4. Incluye la tabla de casos de prueba ejecutados (`esPalindromo("")`, `esPalindromo("a")`, `esPalindromo("reconocer")`, `esPalindromo("radar")`, `esPalindromo("hola")`, `esPalindromo("Radar")`, `esPalindromo(null)`) documentando sus entradas, salidas esperadas y salidas obtenidas.
+
+### Prompt para el Agente Explicador
+
+> **Rol:** Agente Explicador / Tutor Didáctico.
+> 
+> **Tarea:** Explicar el concepto de recursividad y la verificación de palíndromos de manera intuitiva y pedagógica.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Explica qué es la recursividad utilizando la relación $esPalindromo(s) = (s.primero = s.último)\ \land\ esPalindromo(parteCentral(s))$ de manera conceptual.
+> 2. Utiliza una analogía del mundo real (como comparar la primera y la última letra de una palabra y luego "recortar" ambas para seguir con el centro, o revisar una fila de personas desde los dos extremos hacia el medio) para enseñar qué es la pila de llamadas y por qué el caso base es vital para no caer en un bucle infinito.
+> 3. Guía al estudiante paso a paso en el recorrido de `esPalindromo("radar")`:
+> 
+> 
+> - **Fase de ida:** Cómo se comparan los extremos y se reduce el problema moviendo los índices hacia el centro hasta llegar al caso base (longitud $\le 1$).
+> - **Fase de vuelta:** Cómo el `true` del caso base se propaga hacia afuera al regresar por la pila hasta confirmar el palíndromo.
+> 4. Explica por qué el caso base usa longitud $\le 1$, por qué se rechaza `null`, por qué la profundidad de recursión es a lo sumo la mitad de la longitud de la palabra y por qué `"Radar"` no es palíndromo al distinguir mayúsculas de minúsculas.
+> 5. Mantén un tono amigable, claro y enfocado en la comprensión conceptual profunda.
+
+explicacion:
+La clase `EsPalindromo` comprueba si una palabra es palíndroma comparando sus extremos, sin usar ciclos. El método público valida que la cadena no sea `null` y llama al método recursivo con dos índices: `izquierda` comienza en el primer carácter y `derecha` en el último.
+
+El caso base es `izquierda >= derecha`. Esto significa que los índices se encontraron o se cruzaron; todos los pares anteriores coincidieron, así que la cadena es palíndroma y se devuelve `true`. Si los caracteres de los extremos son distintos, se devuelve `false` inmediatamente. Si coinciden, la función reduce la parte pendiente moviendo `izquierda` una posición a la derecha y `derecha` una a la izquierda.
+
+Para `"radar"`, la función compara `'r'` con `'r'`, luego `'a'` con `'a'` y finalmente llega al carácter central. Ese es el caso base, que devuelve `true`; al regresar, los resultados `true` se propagan hasta la llamada inicial. En cambio, con `"hola"`, la primera comparación (`'h'` y `'a'`) ya es distinta, por lo que devuelve `false` sin revisar el centro.
+
+La comparación es exacta y distingue mayúsculas de minúsculas: por eso `"Radar"` resulta falso. La función también rechaza `null`; no normaliza espacios ni signos. El programa incluye pruebas para cadenas vacías, de un carácter, palíndromos, palabras que no son palíndromos y entrada nula.
+
+En el peor caso se revisa hasta la mitad de la cadena: el tiempo es $O(n)$ y la pila recursiva usa $O(n)$ espacio, con profundidad máxima de aproximadamente $n/2$. Si el primer par de caracteres no coincide, termina en $O(1)$. Usar dos índices evita crear una subcadena en cada llamada.
+La clase `EsPalindromo` determina si una palabra se lee igual de izquierda a derecha que de derecha a izquierda, mediante recursión y sin usar ciclos. El método público valida la entrada y luego llama al método recursivo privado; el valor `null` se rechaza porque no puede recorrerse ni compararse.
+
+El caso base se da cuando la parte pendiente tiene longitud 0 o 1, es decir, cuando el índice izquierdo alcanza o supera al derecho. En ese punto ya no quedan pares de extremos por comparar: todos los anteriores coincidieron, así que la respuesta es `true`. Para los demás casos se comparan el primer carácter y el último; si son distintos, la función devuelve `false` de inmediato, y si coinciden, el problema se reduce comprobando la parte central.
+
+Por ejemplo, para `esPalindromo("radar")`, la fase de ida compara los extremos y reduce el problema hacia el centro:
+
+$$esPalindromo("radar", 0, 4): 'r' = 'r'$$
+$$esPalindromo("radar", 1, 3): 'a' = 'a'$$
+$$esPalindromo("radar", 2, 2):\ \text{longitud } 1 \to \text{CASO BASE} = true$$
+
+Al regresar del caso base, el `true` se propaga hacia afuera por la pila: el par `(1,3)` coincide, el par `(0,4)` coincide y el resultado final es `true`. Si en cualquier nivel los extremos no coinciden, un `false` corta la propagación y la palabra se descarta como palíndromo.
+
+La comparación es exacta, por lo que distingue mayúsculas de minúsculas: `"Radar"` no es palíndromo porque `'R'` y `'r'` son caracteres distintos. Además, la función rechaza `null` con un mensaje descriptivo. El programa prueba cadenas vacías, de un carácter, palíndromos como `"reconocer"` y `"radar"`, entradas que no lo son como `"hola"` y entradas con mayúsculas.
+
+Si la palabra tiene $n$ caracteres, se realizan como máximo $n/2$ llamadas recursivas y se usa $O(n)$ espacio en la pila; en el peor caso (palíndromo) el costo de tiempo es $O(n)$, mientras que una diferencia en el primer par de extremos se detecta en tiempo $O(1)$. El uso de dos índices hacia el centro evita crear subcadenas y mantiene el costo lineal.
+explicacion:
