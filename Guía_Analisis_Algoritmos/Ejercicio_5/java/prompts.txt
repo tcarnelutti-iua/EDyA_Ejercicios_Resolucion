@@ -1,0 +1,123 @@
+> **Rol:** Agente Analista de Software.
+> 
+> **Tarea:** Realizar el análisis técnico del problema de conteo recursivo desde un entero no negativo `n` hasta `0`.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Modela los requisitos funcionales y las reglas de negocio especificadas: relación recursiva ($contar(n) = imprimir(n)$ y luego $contar(n-1)$), caso base ($n=0 \to$ imprimir $0$ y detenerse), caso recursivo, tipo de retorno $void$ (el efecto observable es la impresión en pantalla) y restricción/rechazo de números negativos.
+> 2. Identifica los casos de prueba clave (`contar(0)` $\to$ `0`, `contar(1)` $\to$ `1 0`, `contar(5)` $\to$ `5 4 3 2 1 0`, `contar(-1)` $\to$ rechazo) y define los criterios de aceptación, verificando el orden exacto de los números impresos.
+> 3. Analiza el comportamiento esperado de la pila de llamadas (*call stack*) y evalúa posibles riesgos de borde (por qué usar $n+1$ aleja del caso base y provoca un desbordamiento de pila, y por qué los negativos tampoco alcanzan el caso base).
+> 4. Entrega un informe de análisis de requerimientos claro y estructurado.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+> 
+> **Tarea:** Implementar la función recursiva que imprime un conteo desde un entero no negativo `n` hasta `0`, según las especificaciones acordadas.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Escribe la función que acepte un entero `n` con tipo de retorno $void$, cuyo efecto sea mostrar cada número en pantalla.
+> 2. Incluye validación de entrada para rechazar números negativos con un mensaje descriptivo, ya que al disminuirlos tampoco se llegaría a `0`.
+> 3. Implementa explícitamente el caso base (`n == 0` imprime `0` y termina) sin realizar llamadas adicionales.
+> 4. Implementa el caso recursivo imprimiendo el valor actual de `n` y llamando a la función con `n - 1`, de modo que el número disminuya en cada llamada y se acerque al caso base.
+> 5. Agrega comentarios detallados dentro del código que expliquen:
+> 
+> 
+> - Dónde se evalúa y ejecuta el caso base.
+> - Dónde se ejecuta el paso recursivo y cómo se reduce `n`.
+> - Por qué usar $n+1$ alejaría del caso base y podría provocar un desbordamiento de pila.
+> - Cómo se comporta la pila de llamadas y en qué fase (ida) se materializa la impresión.
+> 6. Maneja explícitamente el límite de profundidad recursiva para transformar un eventual `StackOverflowError` en un error descriptivo.
+> 7. Incluye las ejecuciones de prueba directas para `contar(0)`, `contar(1)`, `contar(5)` y `contar(-1)`, comprobando que la salida coincida exactamente con `0`, `1 0`, `5 4 3 2 1 0` y el rechazo, respectivamente.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+> 
+> **Tarea:** Elaborar la documentación técnica completa del componente de conteo recursivo.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Redacta la especificación de la función: firma, parámetros, tipo de retorno $void$, efecto (impresión) y excepciones/errores en caso de entradas negativas o fuera del límite de profundidad recursiva.
+> 2. Explica formalmente la lógica de la función, diferenciando el caso base del caso recursivo.
+> 3. Incluye una traza completa o diagrama textual del flujo de la pila de llamadas para `contar(5)`, detallando la fase de apilado (*stack push*) y aclarando que la impresión ocurre en la fase de ida.
+> 4. Explica por qué el tipo de retorno es $void$ y en qué se diferencia de una función recursiva que devuelve un valor.
+> 5. Incluye la tabla de casos de prueba ejecutados (`contar(0)`, `contar(1)`, `contar(5)`, `contar(-1)`) documentando sus entradas, salidas esperadas y salidas obtenidas.
+
+### Prompt para el Agente Explicador
+
+> **Rol:** Agente Explicador / Tutor Didáctico.
+> 
+> **Tarea:** Explicar el concepto de recursividad y el conteo desde `n` hasta `0` de manera intuitiva y pedagógica.
+> 
+> **Instrucciones:**
+> 
+> 
+> 1. Explica qué es la recursividad utilizando la relación $contar(n) = imprimir(n)$ y luego $contar(n-1)$ de manera conceptual.
+> 2. Utiliza una analogía del mundo real (como una cuenta regresiva o una fila de personas que dicen su número) para enseñar qué es la pila de llamadas y por qué el caso base es vital para no caer en un bucle infinito.
+> 3. Guía al estudiante paso a paso en el recorrido de `contar(5)`:
+> 
+> 
+> - **Fase de ida:** Cómo el problema se reduce restando uno hasta llegar al caso base (`n = 0`).
+> - **Orden de impresión:** Por qué al imprimir antes de la llamada recursiva los números aparecen de mayor a menor (`5 4 3 2 1 0`).
+> 4. Explica por qué usar $n+1$ alejaría del caso base (provocando un desbordamiento de pila) y por qué se rechazan los números negativos.
+> 5. Mantén un tono amigable, claro y enfocado en la comprensión conceptual profunda.
+
+Respuesta de la explicación:
+El conteo recursivo se construye mostrando el número actual y luego pidiendo el mismo conteo, pero un número menos:
+
+$$contar(n) = imprimir(n) \to contar(n-1)$$
+
+Contar desde $n$ hasta $0$ es decir $n$, y después decir todos los números desde $n-1$ hasta $0$. Piensa en una cuenta regresiva: primero anuncias el número en el que estás, y luego le pasas la palabra al número anterior hasta llegar a cero.
+
+**Cuándo detenerse**
+
+La función necesita un caso base para dejar de llamarse a sí misma. Para el conteo:
+
+- Si $n = 0$, se imprime $0$ y la función termina: ya no hay números menores que mostrar.
+
+Los números negativos se rechazan porque, al restarles uno en cada llamada, el valor se alejaría de cero y el caso base nunca se alcanzaría. Por la misma razón no se usa $n+1$: el conteo crecería sin fin y agotaría la memoria de la pila.
+
+**Traza para el conteo desde 5**
+
+La función primero va reduciendo el problema, imprimiendo en el camino:
+
+$$contar(5) \to imprime\ 5,\ llama\ a\ contar(4)$$
+$$contar(4) \to imprime\ 4,\ llama\ a\ contar(3)$$
+$$contar(3) \to imprime\ 3,\ llama\ a\ contar(2)$$
+$$contar(2) \to imprime\ 2,\ llama\ a\ contar(1)$$
+$$contar(1) \to imprime\ 1,\ llama\ a\ contar(0)$$
+$$contar(0) \to imprime\ 0\quad\text{(CASO BASE: deja de llamarse)}$$
+
+La salida completa es:
+
+$$5\ 4\ 3\ 2\ 1\ 0$$
+
+**Por qué el orden es descendente**
+
+Como la impresión ocurre ANTES de la llamada recursiva, los números se muestran en el momento en que la pila todavía se está apilando (fase de ida). No hace falta esperar a que la recursión "regrese" para ver un resultado: el efecto ya ocurrió. Esto diferencia a las funciones $void$ de las que devuelven un valor, donde el resultado aparece al desenrollar la pila.
+
+**Costo**
+
+El conteo realiza $O(n)$ llamadas y usa $O(n)$ espacio en la pila; para valores muy grandes podría producirse un desbordamiento de pila, por eso la implementación limita la profundidad de recursión.
+explicación:
+Una función recursiva puede repetir una tarea llamándose a sí misma con un problema más pequeño. En este caso, la función muestra el número actual y continúa con el siguiente número hacia atrás: $contar(n) = imprimir(n)$ y luego $contar(n-1)$.
+
+La función es de tipo `void` porque su propósito no es calcular un valor para devolverlo, sino producir un efecto: imprimir los números en pantalla. Es como una cuenta regresiva en la que cada número anuncia el siguiente paso.
+
+El caso base es $n=0$: se imprime el cero y se detienen las llamadas. Para $n>0$, se imprime $n$ y se llama con $n-1$. Así, el valor se acerca a cero. Si se usara $n+1$, el valor crecería en vez de acercarse al caso base; las llamadas no terminarían normalmente y podrían agotar la pila. También deben rechazarse los valores negativos, pues restarles uno los aleja aún más de cero.
+
+Por ejemplo, al ejecutar `contar(5)`, la fase de ida imprime cada valor antes de realizar la siguiente llamada:
+
+$$contar(5): imprime\ 5 \to contar(4)$$
+$$contar(4): imprime\ 4 \to contar(3)$$
+$$contar(3): imprime\ 3 \to contar(2)$$
+$$contar(2): imprime\ 2 \to contar(1)$$
+$$contar(1): imprime\ 1 \to contar(0)$$
+$$contar(0): imprime\ 0 \quad \text{y termina}$$
+
+La salida es `5 4 3 2 1 0`. Se puede probar también con `contar(0)`, que debe imprimir `0`; `contar(1)`, que debe imprimir `1 0`; y `contar(-1)`, que debe ser rechazado. Para entradas grandes hay que considerar que cada número requiere una llamada, por lo que el tiempo y el espacio de pila crecen como $O(n)$.
