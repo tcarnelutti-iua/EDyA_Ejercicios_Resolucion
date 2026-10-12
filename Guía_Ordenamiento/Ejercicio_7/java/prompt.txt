@@ -1,0 +1,17 @@
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java Quicksort y analizar su peor caso usando un arreglo ya ordenado de menor a mayor.
+>
+> **Instrucciones:**
+>
+> 1. Usa el arreglo `int[] numeros = {1, 2, 3, 4, 5, 6, 7};`.
+> 2. Elegí siempre el primer elemento de cada subarreglo como pivote.
+> 3. Después de particionar, llamá recursivamente a Quicksort para ordenar las partes izquierda y derecha.
+> 4. Incluí comentarios que expliquen el caso base y cómo la partición genera subproblemas.
+> 5. El programa debe mostrar el arreglo original, cada pivote elegido y los subarreglos resultantes.
+> 6. Al final, debe mostrar el arreglo ordenado y la cantidad total de llamadas recursivas realizadas.
+> 7. Contá cada llamada que el método se hace a sí mismo, incluso si recibe un subarreglo vacío o de un elemento; no cuentes la llamada inicial desde `main`.
+> 8. Explicá por qué, en un arreglo ya ordenado, el primer elemento como pivote puede producir particiones desequilibradas: una queda vacía y la otra contiene los elementos restantes. Así, la profundidad de la recursión crece linealmente y el tiempo puede llegar a O(n²), con espacio de pila O(n) en el peor caso.
+> 9. Verificá que el arreglo termine ordenado y que el contador coincida con las llamadas recursivas efectivamente realizadas.
