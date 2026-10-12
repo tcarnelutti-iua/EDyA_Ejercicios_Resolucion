@@ -1,0 +1,45 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos para detectar elementos duplicados en un vector de enteros en Java.
+>
+> **Instrucciones:**
+>
+> 1. Describe dos estrategias de detección de duplicados: (a) fuerza bruta con dos ciclos anidados comparando cada posición `i` con las posteriores `j = i + 1`, y (b) un único recorrido con un `HashSet<Integer>` que registra los valores ya visitados.
+> 2. Justifica por qué comparar solo pares `(i, j)` con `i < j` evita comparar un elemento consigo mismo y repetir pares.
+> 3. Define las complejidades: fuerza bruta O(n²) temporal y O(1) espacial auxiliar; HashSet O(n) temporal ESPERADO y O(n) espacial auxiliar. Aclara que el costo del HashSet es promedio/esperado, no garantizado.
+> 4. Explica la detención temprana: ambas soluciones pueden cortar apenas encuentran el primer duplicado.
+> 5. Especifica el comportamiento esperado para un vector vacío (devuelve `false`, no hay valores que puedan repetirse) y para un vector nulo (rechazarlo con `IllegalArgumentException`).
+> 6. Propón casos de prueba: vector vacío, un solo elemento, todos los elementos distintos, un duplicado al principio, un duplicado al final y varios valores repetidos. Los resultados de ambas soluciones deben coincidir.
+> 7. Entrega los requisitos y criterios de aceptación de forma clara y estructurada.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java dos soluciones para detectar si un vector de enteros contiene duplicados, siguiendo estos requisitos.
+>
+> **Instrucciones:**
+>
+> 1. Implementa `tieneDuplicadosFuerzaBruta(int[] vector)`: dos ciclos anidados, comparando cada posición `i` con las posiciones posteriores `j` que comienzan en `i + 1`; devuelve `true` apenas encuentra un duplicado.
+> 2. Implementa `tieneDuplicadosConHashSet(int[] vector)`: recorre el vector intentando agregar cada valor a un `HashSet<Integer>`; si `add` devuelve `false`, el valor ya estaba y hay duplicado.
+> 3. Valida que el vector no sea `null`; en ese caso lanza `IllegalArgumentException`. Un vector vacío debe devolver `false`.
+> 4. Comenta el código explicando la detención temprana, la cantidad de comparaciones de la fuerza bruta en el peor caso y la lógica de `add` del HashSet.
+> 5. Compara en la documentación las complejidades: O(n²) temporal / O(1) espacial para la fuerza bruta, y O(n) temporal esperado / O(n) espacial para el HashSet, aclarando que el costo del HashSet es promedio, no garantizado.
+> 6. Incluye pruebas que ejecuten ambas implementaciones sobre los mismos casos: vector vacío, un solo elemento, todos distintos, duplicado al principio, duplicado al final y varios repetidos, verificando que los resultados coincidan.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar las dos implementaciones Java que detectan duplicados en un vector de enteros.
+>
+> **Instrucciones:**
+>
+> 1. Documenta ambas funciones, sus parámetros, el valor de retorno y la excepción que lanzan si el vector es `null`.
+> 2. Explica el mecanismo de la fuerza bruta (comparación de pares `(i, j)` con `i < j`) y el del HashSet (registro de valores visitados con `add`).
+> 3. Explica la detención temprana de ambas soluciones.
+> 4. Indica las complejidades: O(n²) temporal y O(1) espacial para la fuerza bruta; O(n) temporal esperado/promedio y O(n) espacial para el HashSet. Aclara que el costo del HashSet no es garantizado.
+> 5. Documenta los casos de prueba y sus resultados esperados, incluidos los casos límite (vector vacío y nulo).
+> 6. Mantén la documentación precisa y consistente con el comportamiento real del código; no agregues explicaciones sobre recursividad, ya que la solución es iterativa.
