@@ -1,0 +1,76 @@
+> **Rol:** Agente Analista de Software.
+> 
+> **Tarea:** Realizar el análisis técnico del problema de búsqueda recursiva de un número entero dentro de un arreglo de enteros (`int[]`).
+> 
+> **Instrucciones:**
+> 
+> 1. Modela los requisitos funcionales y las reglas de negocio especificadas: búsqueda que comienza en la posición `0`, comparación del elemento de la posición actual con el valor buscado, avance recursivo a `indice + 1` cuando no hay coincidencia. Identifica los dos casos base: (a) si el elemento actual coincide con el valor buscado, devuelve su índice; (b) si el índice llega al final del arreglo, devuelve `-1`. Establece que debe devolverse el índice de la **primera coincidencia** o `-1` si no se encuentra el valor.
+> 2. Especifica la restricción de no utilizar ciclos (`for` ni `while`). Indica que se debe comprobar que **no se haya llegado al final antes de acceder al arreglo** (para evitar un acceso fuera de límites) y que se debe rechazar la entrada `null` con un error descriptivo.
+> 3. Identifica los casos de prueba clave: buscar un valor en la primera posición (devuelve `0`), en el medio (devuelve su índice), en la última posición (devuelve su índice), un valor ausente (devuelve `-1`), en un arreglo vacío (devuelve `-1`) y un valor repetido (devuelve el índice de la **primera coincidencia**). Define los criterios de aceptación correspondientes.
+> 4. Analiza el comportamiento esperado de la pila de llamadas (*call stack*): cómo avanza el índice hacia el final del arreglo en cada llamada recursiva, cuándo se alcanza el caso base (fin del arreglo o coincidencia encontrada), por qué una coincidencia debe devolver el índice de forma inmediata (para garantizar la primera coincidencia) y por qué el caso base de "fin de arreglo" debe evaluarse antes de acceder a `arreglo[indice]`.
+> 5. Entrega un informe de análisis de requerimientos claro, estructurado y conciso.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+> 
+> **Tarea:** Implementar la función recursiva que busca un número dentro de un arreglo de enteros, según las especificaciones acordadas.
+> 
+> **Instrucciones:**
+> 
+> 1. Escribe una función que acepte un arreglo de enteros `int[]` y un valor entero a buscar, y devuelva el índice de la primera coincidencia o `-1` si no lo encuentra, **sin usar ciclos** (`for` ni `while`).
+> 2. Incluye validación de entrada para rechazar `null` con un mensaje descriptivo (mediante `IllegalArgumentException`).
+> 3. Implementa explícitamente los dos casos base:
+>    - Si el elemento actual coincide con el valor buscado: devuelve su índice **sin realizar más llamadas recursivas**.
+>    - Si el índice llega al final del arreglo (`indice >= arreglo.length`): devuelve `-1`. Este caso base debe evaluarse **antes de acceder al arreglo**.
+> 4. Implementa el caso recursivo: si el elemento actual no coincide, avanza recursivamente a la posición siguiente (`indice + 1`).
+> 5. Garantiza que se devuelve **el índice de la primera coincidencia** (retorno inmediato al encontrarla).
+> 6. Agrega comentarios detallados dentro del código que expliquen:
+>    - Dónde se evalúa y ejecuta cada caso base (fin de arreglo y coincidencia encontrada).
+>    - Dónde se ejecuta el paso recursivo y cómo se reduce el problema (`indice + 1`).
+>    - Cómo se resuelve la pila de llamadas al retornar desde los casos base (*unwinding*), mostrando con un ejemplo breve el flujo hacia arriba.
+> 7. Incluye las ejecuciones de prueba directas para los casos solicitados: valor en la primera posición, en el medio, en la última posición, valor ausente, arreglo vacío, valor repetido (devolviendo la primera coincidencia) y la validación de `null`. Comprueba que los resultados coincidan con lo esperado.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+> 
+> **Tarea:** Elaborar la documentación técnica completa del componente de búsqueda recursiva en arreglos.
+> 
+> **Instrucciones:**
+> 
+> 1. Redacta la especificación de la función: firma, parámetros, tipo de retorno y excepciones/errores en caso de entrada `null`.
+> 2. Explica formalmente la lógica de la función, diferenciando claramente ambos casos base del caso recursivo.
+> 3. Incluye una traza completa y detallada del flujo de la pila de llamadas para al menos un ejemplo (por ejemplo, `buscar([1, 3, 7, 9], 7)`), detallando la fase de apilado (*stack push*) y la fase de resolución/desapilado (*stack pop*). Expón también la traza para el caso de arreglo vacío `[]` para justificar el comportamiento.
+> 4. Incluye la tabla de casos de prueba ejecutados con: entradas (`arreglo` y `valorBuscado`), salida esperada, salida obtenida y estado (OK/FALLO), cubriendo todos los casos solicitados: primera posición, medio, última posición, valor ausente, arreglo vacío, valor repetido y entrada `null`.
+> 5. Describe brevemente la complejidad temporal y espacial, así como la profundidad máxima de recursión en función de la longitud del arreglo.
+
+### Prompt para el Agente Explicador
+
+> **Rol:** Agente Explicador / Tutor Didáctico.
+> 
+> **Tarea:** Explicar el concepto de recursividad aplicado a la búsqueda secuencial en un arreglo, de manera intuitiva y pedagógica.
+> 
+> **Instrucciones:**
+> 
+> 1. Explica qué es la recursividad y cómo se aplica a este problema: modelando la búsqueda como "revisar la posición actual; si no coincide, buscar en el resto del arreglo empezando en `indice + 1`".
+> 2. Utiliza una analogía del mundo real (por ejemplo, buscar un libro en una estantería mirando uno por uno desde la izquierda, o revisar una fila de personas de izquierda a derecha hasta encontrar a quien buscas) para explicar la pila de llamadas y por qué los casos base son vitales para evitar un bucle infinito.
+> 3. Guía al estudiante paso a paso en el recorrido de `buscar([1, 3, 7, 9], 7)`:
+>    - **Fase de ida:** Cómo se avanza con `indice + 1` mientras no hay coincidencia, hasta llegar a la posición donde se encuentra el valor.
+>    - **Fase de vuelta:** Cómo el índice encontrado en el caso base se propaga hacia afuera al regresar por la pila hasta la llamada inicial.
+> 4. Explica con claridad por qué el caso base `indice >= arreglo.length` debe comprobarse **antes de acceder a `arreglo[indice]`**, cubriendo especialmente el caso del arreglo vacío.
+> 5. Explica por qué, al encontrar una coincidencia, se devuelve el índice **inmediatamente** (garantizando así que se devuelve la **primera coincidencia**), en lugar de seguir buscando hacia adelante.
+> 6. Explica por qué se rechaza `null`, qué significa devolver `-1` (valor no encontrado), la profundidad de recursión (máximo `n` llamadas para un arreglo de longitud `n`) y las implicaciones prácticas (posible `StackOverflowError` en arreglos muy grandes), manteniendo un tono claro, amigable y didáctico.
+
+explicación:
+
+La clase `BusquedaRecursiva` busca un valor en un arreglo empezando por el índice `0`. El método público `buscar` rechaza un arreglo `null` y luego inicia el proceso recursivo. El método auxiliar recibe el índice actual y avanza una posición cada vez, sin usar ciclos para realizar la búsqueda.
+
+El primer caso base comprueba si `indice >= arreglo.length` antes de acceder a `arreglo[indice]`. Si se llegó al final sin encontrar el valor, devuelve `-1`. Este orden también hace que la búsqueda en un arreglo vacío termine de inmediato y evita acceder fuera de sus límites.
+
+Si el elemento actual coincide con el valor buscado, el método devuelve ese índice inmediatamente. Así garantiza la primera coincidencia. Si no coincide, realiza otra llamada con `indice + 1`.
+
+Por ejemplo, al buscar `7` en `[1, 3, 7, 9]`, los índices `0` y `1` no coinciden, por lo que la búsqueda avanza; en el índice `2` encuentra el `7` y devuelve `2`. Ese resultado se propaga de regreso hasta la llamada inicial. Si el valor no aparece, las llamadas avanzan hasta el final y devuelven `-1`.
+
+El programa prueba valores en distintas posiciones, valores ausentes, arreglos vacíos, repetidos y entradas `null`. La búsqueda tarda hasta $O(n)$ en el peor caso y usa $O(n)$ espacio de pila, con hasta $n$ llamadas para un arreglo de longitud $n$. Si el valor está en la primera posición, termina en $O(1)$. El método auxiliar que formatea el arreglo para mostrar las pruebas usa un ciclo, pero ese ciclo no forma parte de la función recursiva de búsqueda.
+
