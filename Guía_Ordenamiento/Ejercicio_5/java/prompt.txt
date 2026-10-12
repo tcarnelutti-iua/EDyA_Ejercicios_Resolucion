@@ -1,0 +1,47 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un programa Java que ordene un arreglo de enteros mediante ShellSort y muestre el proceso etapa por etapa.
+>
+> **Instrucciones:**
+>
+> 1. Describe la estrategia: generalizar Insertion Sort ordenando por etapas subsecuencias de elementos separados por un `gap`, con inserción por saltos, reduciendo el gap en cada etapa.
+> 2. Especifica la secuencia de gaps solicitada: comenzar en `n / 2` y dividir por dos en cada etapa hasta llegar a `1`.
+> 3. Justifica por qué ShellSort puede mejorar a Insertion Sort en arreglos grandes o desordenados: los saltos mueven elementos grandes distancias en pocas operaciones, mientras que Insertion Sort solo desplaza elementos adyacentes. Aclara que las etapas con gaps grandes preparan el arreglo y que es la etapa final con `gap = 1` la que garantiza el orden completo.
+> 4. Define la entrada como una cantidad de elementos y sus valores enteros; usa como ejemplo principal `{8, 3, 7, 4, 2, 6, 5, 1}`.
+> 5. Especifica que la salida debe mostrar el arreglo original, la secuencia de gaps, el valor del gap en cada etapa, el estado del arreglo después de cada inserción indicando el gap usado, el arreglo ordenado y la verificación del orden. Define un desplazamiento como mover un elemento mayor `gap` posiciones a la derecha; la colocación final del elemento insertado no cuenta.
+> 6. Analiza las complejidades: con la secuencia de Shell, peor caso `O(n²)` y promedio aproximado `O(n^1.3)`–`O(n^1.5)`; mejor caso `O(n)`; espacio auxiliar `O(1)`. Señala que la cota depende de la secuencia de gaps usada (Knuth/Hibbard `O(n^1.5)`, Sedgewick `O(n^1.33)`) y que ShellSort no es estable.
+> 7. Propón criterios de aceptación y casos de prueba: desordenado, ya ordenado, orden inverso, valores repetidos, vacío, un elemento, valores extremos y entrada `null`.
+> 8. Entrega un análisis claro y estructurado, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java ShellSort para ordenar un arreglo de enteros in-place con la secuencia `n/2, n/4, ..., 1` y mostrar paso a paso su proceso.
+>
+> **Instrucciones:**
+>
+> 1. Implementa el método de ordenamiento con un ciclo externo que recorra los gaps desde `n / 2` dividiendo por dos hasta `1`, y un ciclo interno que, para cada índice `i >= gap`, guarde el elemento actual y desplace `gap` posiciones a la derecha cada elemento previo de la subsecuencia que sea mayor, colocando luego el elemento guardado en el hueco.
+> 2. Cuenta cada desplazamiento de un elemento mayor hacia la derecha y cada comparación entre valores; no cuentes la asignación final que coloca el elemento insertado.
+> 3. Conserva el arreglo original, la secuencia de gaps y el estado del arreglo al finalizar cada inserción junto con el gap usado, para poder mostrarlo paso a paso. Presenta el original, cada etapa con su gap, cada estado, el arreglo final y los contadores.
+> 4. Incluye el ejemplo `{8, 3, 7, 4, 2, 6, 5, 1}`; debe quedar ordenado de menor a mayor.
+> 5. Comenta la secuencia de gaps, la inserción por saltos y cómo se reduce el gap. Explica por qué los gaps grandes preparan el arreglo y por qué el gap `1` garantiza el orden total, destacando la ventaja frente a Insertion Sort.
+> 6. Documenta las complejidades: con esta secuencia, peor caso `O(n²)` y promedio aproximado `O(n^1.3)`–`O(n^1.5)`; mejor caso `O(n)`; espacio auxiliar `O(1)`; aclara que depende de la secuencia de gaps. Rechaza un arreglo `null` con error descriptivo y acepta arreglos vacíos o de un elemento.
+> 7. Verifica los resultados contra un ordenamiento de referencia y prueba arreglos desordenados, ya ordenados, en orden inverso, con repetidos, vacíos, de un elemento y con valores extremos. Incluye un modo de prueba automática y, si se solicita entrada por consola, valida los datos ingresados.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java de ShellSort y la presentación de sus etapas, estados y métricas.
+>
+> **Instrucciones:**
+>
+> 1. Documenta la entrada, el método de ordenamiento, el efecto in-place, el resultado devuelto y el comportamiento ante un arreglo `null`.
+> 2. Explica la secuencia de gaps (`n/2, n/4, ..., 1`), la inserción por saltos y cómo se reduce el gap hasta llegar a `1`.
+> 3. Define qué cuenta como desplazamiento y aclara que colocar el valor insertado en el hueco no se contabiliza como tal.
+> 4. Describe qué información se muestra: arreglo original, secuencia de gaps, valor del gap por etapa, estado después de cada inserción, arreglo final, verificación del orden y contadores.
+> 5. Analiza la complejidad: con la secuencia de Shell, peor caso `O(n²)`, promedio aproximado `O(n^1.3)`–`O(n^1.5)`, mejor caso `O(n)` y espacio auxiliar `O(1)`; aclara que depende de la secuencia de gaps. Explica por qué mejora a Insertion Sort y por qué no es estable.
+> 6. Documenta los casos de prueba y sus resultados, asegurando que la documentación coincida con el comportamiento real del programa.
