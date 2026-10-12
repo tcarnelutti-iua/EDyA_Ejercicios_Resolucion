@@ -1,0 +1,49 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un algoritmo en Java que busque un número entero en un vector ordenado de menor a mayor mediante búsqueda binaria iterativa.
+>
+> **Instrucciones:**
+>
+> 1. Describe la estrategia de búsqueda binaria: mantener un intervalo [inicio, fin], calcular el índice medio, comparar el valor central y descartar la mitad que no puede contener el valor buscado.
+> 2. Justifica por qué el orden ascendente de los datos permite descartar una mitad en cada paso, y por qué esto es más eficiente que la búsqueda lineal. Contrasta la complejidad temporal O(log n) de la búsqueda binaria con la O(n) de la búsqueda lineal.
+> 3. Especifica que la versión requerida es iterativa y que su complejidad espacial auxiliar es O(1).
+> 4. Define el contrato de la función: recibe el vector y el valor buscado, y devuelve el índice donde se encuentra o -1 si no está.
+> 5. Documenta la precondición de que el vector debe estar ordenado de menor a mayor y explica por qué no conviene verificar ni ordenar dentro del algoritmo.
+> 6. Define el comportamiento con valores repetidos (cualquier coincidencia o la primera) y con un vector vacío (debe devolverse -1).
+> 7. Especifica el seguimiento paso a paso requerido: límites inicio y fin, índice medio, valor en esa posición y actualización del intervalo en cada iteración, además del resultado final.
+> 8. Propón casos de prueba para un valor en el medio, en los extremos, un valor inexistente, un vector vacío y un vector con valores repetidos.
+> 9. Entrega el análisis de forma clara y estructurada, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java una búsqueda binaria iterativa de un entero en un vector ordenado de menor a mayor, mostrando la evolución de la búsqueda paso a paso.
+>
+> **Instrucciones:**
+>
+> 1. Implementa un método que reciba un `int[]` y el entero a buscar y devuelva el índice de una aparición, o `-1` si no está.
+> 2. Mantén el intervalo `[inicio, fin]` cerrado, calcula `medio` de forma segura (sin desbordamiento) y descarta la mitad izquierda o derecha según la comparación. Usa un bucle `while` (versión iterativa) con espacio auxiliar O(1).
+> 3. Rechaza un vector `null` con `IllegalArgumentException` con un mensaje descriptivo. Para un vector vacío, devuelve `-1`.
+> 4. Documenta que el vector debe estar ordenado de menor a mayor y que no se verifica ni se ordena internamente.
+> 5. Define y documenta el comportamiento con valores repetidos: se devuelve cualquier coincidencia, y explica cómo se obtendría la primera si se necesitara.
+> 6. Comenta el código para explicar la inicialización, el cálculo del medio, la comparación y la actualización del intervalo en cada caso.
+> 7. Haz que el programa muestre paso a paso la evolución de las variables en cada iteración: `inicio`, `fin`, `medio`, el valor `vector[medio]` y la actualización del intervalo, así como el resultado final.
+> 8. Incluye pruebas para un valor en el medio, en los extremos, un valor inexistente, un vector vacío y un vector con valores repetidos. Agrega casos de borde: un solo elemento, valores negativos, el valor `0` y los límites del tipo `int`, además del rechazo de un vector `null`.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la implementación Java de la búsqueda binaria iterativa en un vector ordenado.
+>
+> **Instrucciones:**
+>
+> 1. Documenta el método público: parámetros, valor de retorno (índice o -1) y la excepción para un vector `null`.
+> 2. Explica la estrategia de la búsqueda binaria y el uso del intervalo [inicio, fin], el cálculo del índice medio y el descarte de mitades.
+> 3. Aclara la precondición de orden ascendente y por qué el algoritmo no verifica ni ordena el vector.
+> 4. Documenta el comportamiento con valores repetidos (se devuelve cualquier aparición) y con un vector vacío (se devuelve -1).
+> 5. Indica la complejidad temporal O(log n) en todos los casos y la complejidad espacial auxiliar O(1) de la versión iterativa.
+> 6. Documenta los casos de prueba y sus resultados esperados, incluidos los casos límite, manteniendo la explicación consistente con el comportamiento real del código.
