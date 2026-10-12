@@ -1,0 +1,47 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un algoritmo Java que determine si dos vectores de enteros son iguales.
+>
+> **Instrucciones:**
+>
+> 1. Define la entrada (dos vectores de enteros) y el resultado esperado (un booleano: iguales o no).
+> 2. Establece la noción de igualdad: misma longitud y mismos elementos en las mismas posiciones.
+> 3. Propón una estrategia de dos etapas: comparar primero las longitudes y, solo si coinciden, comparar los elementos posición por posición con finalización anticipada en la primera diferencia.
+> 4. Justifica por qué comparar longitudes primero evita recorridos innecesarios y por qué cortar ante la primera diferencia es correcto.
+> 5. Analiza la complejidad temporal: mejor caso O(1) (longitudes distintas o diferencia en la primera posición), peor caso O(n) (vectores iguales o diferencia en la última posición) y caso promedio O(n) (se examina ~n/2 posiciones). Indica que el espacio auxiliar es O(1).
+> 6. Define el comportamiento de los casos límite: dos vectores vacíos son iguales; el vector `null` se maneja de forma explícita y documentada.
+> 7. Propón criterios de aceptación y pruebas para vectores iguales, longitudes distintas, diferencia en la primera posición, diferencia en la última posición, dos vectores vacíos y casos con `null`.
+> 8. Entrega el análisis de forma clara y estructurada, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java una función que determine si dos vectores de enteros son iguales.
+>
+> **Instrucciones:**
+>
+> 1. Implementa un método que reciba dos `int[]` y devuelva un `boolean`.
+> 2. Maneja explícitamente el caso `null`: dos `null` son iguales y exactamente un `null` implica vectores distintos; documenta la decisión.
+> 3. Compara primero las longitudes: si difieren, devuelve `false` sin recorrer los vectores. Si coinciden, recorre posición por posición y finaliza inmediatamente al detectar una diferencia. Devuelve `true` solo si todas las posiciones coinciden.
+> 4. Trata dos vectores vacíos como iguales (el bucle no itera y se devuelve `true`).
+> 5. Comenta el código explicando la comparación y la finalización anticipada.
+> 6. Analiza la complejidad temporal: mejor caso O(1), peor caso O(n) y caso promedio O(n); el espacio auxiliar es O(1).
+> 7. Incluye pruebas para vectores iguales, longitudes distintas (en ambos sentidos), diferencia en la primera posición, diferencia en la última posición, dos vectores vacíos, vacío frente a no vacío, vectores `null` y un caso con valores extremos de `int`.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la función Java que determina si dos vectores de enteros son iguales.
+>
+> **Instrucciones:**
+>
+> 1. Documenta el método: parámetros (incluyendo que pueden ser `null`), valor de retorno y el comportamiento definido ante `null`.
+> 2. Explica la comparación en dos etapas (longitudes y luego elementos) y la finalización anticipada en la primera diferencia.
+> 3. Justifica por qué comparar primero las longitudes y por qué detenerse en la primera diferencia no altera el resultado.
+> 4. Indica que dos vectores vacíos son iguales y que un vector `null` se maneja explícitamente (ambos `null` son iguales; uno solo `null` implica desigualdad).
+> 5. Incluye el análisis de complejidad: tiempo O(1) en el mejor caso y O(n) en el peor y en el promedio; espacio auxiliar O(1).
+> 6. Documenta los casos de prueba y sus resultados esperados, manteniendo la documentación coherente con el comportamiento de la implementación.
