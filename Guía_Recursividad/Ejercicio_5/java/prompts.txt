@@ -1,0 +1,45 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos de un algoritmo Java que cuente cuántas veces aparece un entero en un vector.
+>
+> **Instrucciones:**
+>
+> 1. Define la entrada (vector de enteros y valor a contar) y el resultado esperado (cantidad de apariciones).
+> 2. Propón un recorrido lineal completo: comparar cada elemento con el valor buscado e incrementar el contador ante cada coincidencia.
+> 3. Justifica por qué es necesario recorrer todo el vector: cada posición aún no examinada podría contener otra aparición, por lo que no se puede detener el conteo al encontrar una coincidencia.
+> 4. Analiza la complejidad temporal O(n) para el mejor, peor y caso promedio, dado que siempre se examinan todos los elementos; indica que el espacio auxiliar es O(1).
+> 5. Define el comportamiento de los casos límite: vector vacío devuelve 0 y vector `null` se rechaza con `IllegalArgumentException` descriptiva.
+> 6. Propón criterios de aceptación y pruebas para valor presente una vez, varias veces, ausente, vector vacío, un solo elemento y vector `null`.
+> 7. Entrega el análisis de forma clara y estructurada, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java una función que cuente las apariciones de un entero dentro de un vector de enteros.
+>
+> **Instrucciones:**
+>
+> 1. Implementa un método que reciba `int[] vector` y el entero `valor` y devuelva la cantidad de apariciones de `valor`.
+> 2. Rechaza un vector `null` con `IllegalArgumentException` y un mensaje descriptivo. Un vector vacío es válido y debe devolver 0.
+> 3. Recorre el vector completo, comparando cada elemento con el valor buscado e incrementando un contador por cada coincidencia. No detengas el recorrido antes del final, ya que podrían existir más apariciones.
+> 4. Comenta el código para explicar el conteo y por qué es necesario completar el recorrido.
+> 5. Analiza la complejidad temporal O(n) en el mejor, peor y caso promedio, y el espacio auxiliar O(1).
+> 6. Incluye pruebas para el valor presente una vez, presente varias veces, ausente, un vector vacío, un vector con un elemento que coincide y otro que no coincide, y vector `null`. Agrega un caso con todos los elementos iguales y otro con valores extremos de `int`.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar la función Java que cuenta las apariciones de un valor dentro de un vector.
+>
+> **Instrucciones:**
+>
+> 1. Documenta el método: parámetros, valor de retorno y excepción que se lanza si el vector es `null`.
+> 2. Explica cómo se recorre el vector y cómo se actualiza el contador ante cada coincidencia.
+> 3. Justifica por qué debe examinarse el vector completo: detenerse en la primera coincidencia podría omitir apariciones posteriores.
+> 4. Indica que un vector vacío devuelve 0 y que un vector `null` se rechaza con una excepción descriptiva.
+> 5. Incluye el análisis de complejidad: tiempo O(n) para mejor, peor y caso promedio, porque siempre se visitan todos los elementos; espacio auxiliar O(1).
+> 6. Documenta los casos de prueba y sus resultados esperados, manteniendo la documentación coherente con el comportamiento de la implementación.
