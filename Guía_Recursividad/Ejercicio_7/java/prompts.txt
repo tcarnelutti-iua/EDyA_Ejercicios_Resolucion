@@ -1,0 +1,45 @@
+### Prompt para el Agente Analista
+
+> **Rol:** Agente Analista de Software.
+>
+> **Tarea:** Analizar los requisitos para invertir el orden de los elementos de un vector de enteros en Java mediante dos versiones distintas.
+>
+> **Instrucciones:**
+>
+> 1. Describe dos estrategias de inversión: (a) crear un vector auxiliar del mismo tamaño y copiar cada elemento `vector[i]` a la posición espejo `resultado[n - 1 - i]`, y (b) invertir in-place con dos índices `izquierda` y `derecha` que avanzan al encuentro intercambiando los extremos.
+> 2. Justifica por qué la copia en orden espejo no modifica la entrada y por qué el intercambio de extremos hacia el centro recorre cada par exactamente una vez.
+> 3. Define las complejidades: ambas son O(n) en tiempo; la versión auxiliar es O(n) en espacio (reserva un vector nuevo) y la in-place es O(1) en espacio auxiliar (solo dos índices y una variable temporal).
+> 4. Explica la condición de corte `izquierda < derecha`: por qué al cruzarse (o coincidir en el centro) todos los pares ya fueron procesados y por qué el elemento central de un vector impar no se toca.
+> 5. Especifica el comportamiento para un vector vacío y uno de un solo elemento (ambos ya están invertidos, no es error) y para un vector nulo (rechazarlo con `IllegalArgumentException`).
+> 6. Propón casos de prueba: varios elementos, vector vacío, un solo elemento, longitud par, dos elementos y valores negativos/extremos. Verifica que ambas versiones coincidan y que la auxiliar no modifique la entrada.
+> 7. Entrega el análisis de forma clara y estructurada, sin implementar el código.
+
+### Prompt para el Agente Desarrollador
+
+> **Rol:** Agente Desarrollador de Software.
+>
+> **Tarea:** Implementar en Java dos versiones para invertir un vector de enteros, siguiendo estos requisitos.
+>
+> **Instrucciones:**
+>
+> 1. Implementa `invertirConVectorAuxiliar(int[] vector)`: crea un vector nuevo de igual longitud, recorre el original de izquierda a derecha y escribe `vector[i]` en `resultado[n - 1 - i]`; devuelve el vector nuevo sin modificar el original.
+> 2. Implementa `invertirInPlace(int[] vector)`: usa dos índices `izquierda = 0` y `derecha = n - 1`; mientras `izquierda < derecha`, intercambia ambos extremos y mueve `izquierda++`, `derecha--`. El método modifica el vector recibido.
+> 3. Valida que el vector no sea `null`; en ese caso lanza `IllegalArgumentException`. Un vector vacío o de un solo elemento no debe generar intercambios (ya están invertidos).
+> 4. Comenta el código explicando cómo se construye la versión auxiliar con la posición espejo y cómo avanzan los índices de la versión in-place hasta el centro.
+> 5. Compara en la documentación: ambas O(n) en tiempo; la auxiliar O(n) en espacio pero conserva la entrada; la in-place O(1) de espacio auxiliar pero modifica la entrada.
+> 6. Incluye pruebas que ejecuten ambas versiones sobre los mismos casos (varios elementos, vector vacío, un solo elemento, entre otros), verificando que produzcan el mismo orden invertido y que la versión auxiliar no modifique el original.
+
+### Prompt para el Agente Documentador
+
+> **Rol:** Agente Documentador de Código y API.
+>
+> **Tarea:** Documentar las dos implementaciones Java que invierten un vector de enteros.
+>
+> **Instrucciones:**
+>
+> 1. Documenta ambas funciones, sus parámetros, el valor de retorno (ninguno en la in-place, que modifica la entrada) y la excepción que lanzan si el vector es `null`.
+> 2. Explica el mecanismo de la versión auxiliar (copia en orden espejo `resultado[i] = vector[n - 1 - i]`) y el de la versión in-place (dos índices que avanzan al encuentro intercambiando extremos).
+> 3. Indica que ambas tienen complejidad temporal O(n); que la auxiliar usa O(n) de espacio adicional pero preserva el original; y que la in-place usa O(1) de espacio auxiliar pero destruye el orden original.
+> 4. Justifica la condición de corte `izquierda < derecha` y el tratamiento del elemento central en vectores de longitud impar.
+> 5. Documenta el comportamiento de los casos límite: vector vacío y de un solo elemento (ya invertidos) y vector nulo (rechazado con `IllegalArgumentException`).
+> 6. Documenta los casos de prueba y sus resultados esperados, manteniendo la documentación coherente con el comportamiento real del código.
