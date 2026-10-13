@@ -1,0 +1,18 @@
+Implementa en Java una cola simple lineal usando un arreglo y demuestra el desperdicio de posiciones que ocurre al retirar elementos. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_9 y crea el archivo ColaSimple.java. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica brevemente que esta cola es lineal y no circular. En una cola lineal, rear avanza hacia el final del arreglo al agregar elementos, y front avanza al retirar elementos. Los espacios que quedan libres antes de front no pueden reutilizarse mientras haya elementos en la cola, porque enqueue no vuelve al inicio ni desplaza los elementos.
+
+Requisitos:
+- Usa un arreglo de enteros de capacidad fija, junto con los índices front y rear.
+- Inicializa la cola vacía de forma consistente y controla los casos de cola vacía y de falta de espacio al final del arreglo.
+- Implementa enqueue para agregar al final disponible y dequeue para retirar el primer elemento. Al retirar, deja visible que esa posición quedó libre, por ejemplo marcándola con un valor especial al mostrar el arreglo.
+- No implementes una cola circular, no desplaces los elementos para compactar el arreglo y no reutilices los espacios iniciales mientras la cola aún tenga elementos.
+- Muestra el arreglo completo, indicando las posiciones vacías y los valores almacenados, además de los índices front y rear, después de cada operación de la demostración.
+
+La demostración debe ser reproducible y mostrar explícitamente este caso:
+1. Usa una capacidad de 5 y agrega cinco valores para llegar al final del arreglo.
+2. Retira dos elementos con dequeue.
+3. Muestra que las dos posiciones iniciales están libres, pero los elementos restantes siguen ocupando las posiciones posteriores y rear continúa al final.
+4. Intenta agregar otro valor y recházalo, explicando que no puede reutilizarse el espacio libre inicial en una cola simple lineal.
+
+Si toda la cola queda vacía, puedes reiniciar front y rear para dejarla lista para usarse de nuevo; no hagas ese reinicio en la demostración principal, porque allí todavía quedan elementos. Al terminar, verifica que ColaSimple.java compile y resume el resultado observado.

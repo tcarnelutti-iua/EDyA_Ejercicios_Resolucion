@@ -1,0 +1,16 @@
+Implementa en Java un sistema sencillo de cola de impresión. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_8 y crea el archivo ColaImpresion.java. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica brevemente por qué una cola representa correctamente el orden de impresión: los documentos se procesan en el mismo orden en que se agregaron (FIFO, primero en entrar, primero en salir). Una pila no sería adecuada porque invertiría ese orden e imprimiría primero el documento agregado más recientemente.
+
+Requisitos:
+- Implementa la cola con un arreglo de capacidad fija y una estructura circular para reutilizar posiciones liberadas. No uses Queue, LinkedList ni otras colecciones para almacenar los trabajos.
+- Cada documento debe tener un nombre y una cantidad de páginas. Usa una clase Documento para representar esos datos.
+- Incluye un menú por consola para agregar un documento a la cola, imprimir el siguiente documento, consultar cuál será el próximo en imprimirse y salir.
+- Al agregar, solicita el nombre y la cantidad de páginas. Rechaza nombres vacíos y cantidades de páginas que no sean positivas.
+- Al imprimir, procesa y retira el documento que está al frente, mostrando su nombre y cantidad de páginas. El siguiente documento debe ser el que llevaba más tiempo esperando.
+- Consultar el próximo documento no debe retirarlo de la cola.
+- Si la cola está vacía, informa claramente que no hay documentos para consultar o imprimir. Si está llena, rechaza el nuevo trabajo sin alterar los ya encolados.
+- Controla los índices del frente y final de la cola y la cantidad de elementos para diferenciar los estados vacío y lleno. Explica cómo avanzan de forma circular.
+- Maneja entradas inválidas sin que el programa termine inesperadamente.
+
+Incluye una prueba que agregue varios documentos y verifique que se imprimen en el mismo orden de llegada, además de casos de cola vacía y llena. Al terminar, verifica que ColaImpresion.java compile y resume qué implementaste y el resultado de la verificación.

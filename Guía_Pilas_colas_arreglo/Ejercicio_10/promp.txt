@@ -1,0 +1,20 @@
+Implementa en Java una cola circular de enteros utilizando un arreglo. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_10 y crea el archivo ColaCircular.java. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica cómo el operador módulo (%) hace que los índices vuelvan al inicio del arreglo. Usa esta representación para evitar ambigüedades:
+- front apunta a la próxima posición desde la que se retirará un elemento.
+- rear apunta a la próxima posición libre donde se agregará un elemento.
+- Después de usar una posición, cada índice avanza con (indice + 1) % capacidad. Por ejemplo, si capacidad es 5 y el índice está en 4, (4 + 1) % 5 da 0.
+- Mantén un contador size. La cola está vacía cuando size == 0 y llena cuando size == capacidad. Así se distinguen ambos estados aunque los índices coincidan.
+
+Requisitos:
+- Usa un arreglo de enteros de capacidad fija y no uses Queue, LinkedList ni colecciones.
+- Recibe la capacidad en el constructor y rechaza valores menores o iguales a cero.
+- Implementa enqueue(int valor), dequeue(), front(), isEmpty(), isFull() y size().
+- enqueue guarda en la posición rear, avanza rear con el operador módulo e incrementa size. Si la cola está llena, informa el error sin modificarla.
+- dequeue obtiene el valor en front, avanza front con el operador módulo y decrementa size. Si está vacía, informa el error.
+- front devuelve el primer valor sin retirarlo; si está vacía, informa el error.
+- Mantén FIFO: se retira primero el elemento que lleva más tiempo en la cola.
+
+Incluye una demostración que muestre que se reutilizan posiciones liberadas al inicio: agrega varios valores, retira algunos y agrega otros hasta que los índices crucen el final del arreglo y vuelvan al índice 0. Muestra el contenido y los índices front, rear y size durante el proceso. Incluye también comprobaciones de cola llena y vacía.
+
+Al terminar, verifica que ColaCircular.java compile y resume qué implementaste y el resultado de la verificación.

@@ -1,0 +1,16 @@
+Implementa en Java un sistema de turnos para la atención de una oficina. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_7 y crea el archivo SistemaTurnos.java. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica brevemente por qué se usa una cola FIFO y no una pila LIFO. FIFO significa que la primera persona que llega es la primera en ser atendida; una pila LIFO atendería primero a la persona que llegó más recientemente, lo que no respeta el orden de llegada.
+
+Requisitos:
+- Implementa una cola con un arreglo de capacidad fija. No uses Queue, LinkedList ni otras colecciones para almacenar los turnos.
+- Usa una cola circular para poder reutilizar las posiciones liberadas al atender personas.
+- Cada persona ingresará su nombre y recibirá un número de turno consecutivo. Representa cada turno con el número y el nombre de la persona.
+- El número de turno solo se asigna y avanza si la persona pudo agregarse a la cola. Si está llena, informa el problema y no incrementes el contador.
+- Incluye un menú por consola que permita registrar una persona, atender a la siguiente, consultar quién está primero y salir.
+- Consultar quién está primero no debe quitar a esa persona de la cola. Atender sí debe retirarla y mostrar su número y nombre.
+- Si la cola está vacía, informa claramente que no hay personas para consultar o atender, sin causar errores.
+- Rechaza nombres vacíos y maneja las entradas inválidas del menú sin terminar inesperadamente.
+- Usa índices para el frente y el final de la cola y controla cuántos elementos contiene para distinguir los estados vacío y lleno. Explica cómo avanzan los índices de forma circular.
+
+No agregues funciones de prioridad: todas las personas deben conservar el orden de llegada. Al terminar, verifica que SistemaTurnos.java compile y prueba un flujo donde se registren al menos dos personas, se consulte el frente y se atienda a ambas en el mismo orden en que llegaron. Incluye también una prueba de cola vacía y resume qué implementaste y el resultado de la verificación.
