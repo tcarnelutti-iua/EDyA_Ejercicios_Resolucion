@@ -1,0 +1,21 @@
+Implementa en Java un simulador simple de historial de navegación. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_4 y crea allí el archivo Java correspondiente. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica brevemente cómo representarás el historial. El programa debe permitir:
+- Visitar una página ingresando su URL.
+- Volver a la página anterior.
+- Consultar cuál es la página actual.
+- Salir del programa.
+
+Usa una pila implementada con un arreglo de String. No uses Stack ni colecciones para almacenar las URLs. Define una capacidad máxima mediante una constante fácil de modificar e informa si no se puede agregar otra página porque el historial está lleno.
+
+Comportamiento del historial:
+- Cada vez que se visita una URL válida, apílala. La URL que queda en la cima representa la página actual.
+- Al volver, si hay una página anterior, desapila la página actual con pop. La nueva cima pasa a ser la página actual.
+- Si no hay una página anterior, informa que no es posible volver y conserva el estado.
+- Si el historial está vacío, informa que todavía no se visitó ninguna página.
+- Rechaza URLs vacías o compuestas solo por espacios. No es necesario comprobar que la página exista o sea accesible.
+- Una visita nueva después de volver se agrega a la cima y pasa a ser la página actual.
+
+Incluye un menú por consola y maneja entradas inválidas sin terminar inesperadamente. Explica por qué una pila sigue el principio LIFO: la visita más reciente está en la cima y debe quitarse primero al volver, dejando visible la visita anterior. No implementes navegación hacia adelante.
+
+Al terminar, verifica que el archivo compile y prueba al menos este flujo: visitar dos URLs, consultar la actual, volver y comprobar que se muestra la primera URL; intentar volver sin una página anterior; e intentar volver con el historial vacío. Resume qué implementaste y el resultado de la verificación.
