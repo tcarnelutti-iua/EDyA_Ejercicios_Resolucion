@@ -1,0 +1,21 @@
+Implementa en Java una clase ColaEnteros usando un arreglo de capacidad fija. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_6 y crea el archivo ColaEnteros.java. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica brevemente el funcionamiento de la cola y de sus índices. Implementa una cola circular para que las posiciones liberadas al desencolar puedan reutilizarse:
+- front es el índice del primer elemento de la cola, es decir, el próximo que devolverá dequeue o front.
+- rear es el índice del último elemento agregado. Al encolar, avanza rear y guarda allí el nuevo entero.
+- Al desencolar, se elimina conceptualmente el elemento en front y front avanza a la siguiente posición.
+- Como la cola es circular, ambos índices vuelven al inicio del arreglo al alcanzar su final.
+- Usa size para saber cuántos elementos hay y distinguir sin ambigüedades la cola vacía de la llena. isEmpty debe ser verdadero cuando size es 0; isFull, cuando size es igual a la capacidad.
+- Define claramente los valores iniciales de front y rear para una cola vacía y restablece un estado consistente cuando se elimina el último elemento.
+
+La clase debe ofrecer estas operaciones públicas:
+- enqueue(int valor): agrega al final; si está llena, informa el error sin modificar la cola.
+- dequeue(): elimina y devuelve el elemento del frente; si está vacía, informa el error.
+- front(): devuelve el elemento del frente sin eliminarlo; si está vacía, informa el error.
+- isEmpty(): indica si no hay elementos.
+- isFull(): indica si se alcanzó la capacidad.
+- size(): devuelve la cantidad de elementos actuales.
+
+Recibe la capacidad en el constructor y valida que sea positiva. No uses Queue, LinkedList ni otras colecciones para almacenar los datos. Mantén la implementación clara y documenta brevemente las transiciones de índices, en particular el avance circular al llegar al final del arreglo.
+
+Incluye una demostración breve que permita comprobar el orden FIFO, la consulta con front sin eliminar elementos, los casos de cola vacía y llena, y la reutilización de una posición liberada después de dequeue. Al terminar, verifica que ColaEnteros.java compile y resume qué implementaste y el resultado de la verificación.
