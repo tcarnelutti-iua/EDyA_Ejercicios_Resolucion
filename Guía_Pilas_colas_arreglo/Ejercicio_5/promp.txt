@@ -1,0 +1,18 @@
+Implementa una clase genérica Pila<T> en Java usando un arreglo. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_5 y crea el archivo Pila.java. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica brevemente qué problema resuelven los genéricos: permiten reutilizar una misma implementación para distintos tipos y conservar comprobaciones de tipos en compilación, sin convertir la pila en una estructura que acepte elementos de cualquier tipo indistintamente. Compara Pila<T> con una pila hecha solamente para int: esa pila solo puede almacenar enteros, mientras que la genérica puede usarse como Pila<Integer>, Pila<String> o con una clase sencilla propia. Aclara que Java no permite tipos genéricos primitivos como Pila<int>; para enteros se usa el tipo envoltorio Integer.
+
+Requisitos de la implementación:
+- Declara la clase como Pila<T> y usa un arreglo como almacenamiento interno. No uses Stack ni colecciones para almacenar los elementos.
+- Como Java no permite crear directamente un arreglo de T, usa un arreglo de Object internamente y realiza las conversiones necesarias de forma localizada, documentando o suprimiendo únicamente la advertencia inevitable.
+- Implementa un constructor que reciba la capacidad máxima y valide que sea positiva.
+- Implementa push(T elemento), pop(), peek(), isEmpty() y size().
+- push agrega el elemento en la cima y debe informar claramente si la pila está llena. No redimensiones el arreglo.
+- pop devuelve y elimina el elemento superior; peek devuelve el elemento superior sin eliminarlo.
+- Si pop o peek se invocan con la pila vacía, maneja el caso de forma explícita y clara.
+- Al desapilar, limpia la posición que queda libre del arreglo para no retener referencias innecesarias.
+- Mantén el orden LIFO: el último elemento agregado es el primero en salir.
+
+Incluye una demostración breve que use la misma clase Pila<T> con Pila<Integer>, Pila<String> y una clase simple propia, por ejemplo Persona. Muestra operaciones de apilar, consultar y desapilar. No mezcles tipos distintos dentro de una misma pila y no uses casts en el código cliente.
+
+Al terminar, verifica que Pila.java compile y resume qué implementaste, cómo se manejan los tipos y el resultado de la verificación.
