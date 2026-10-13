@@ -19,3 +19,5 @@ La clase debe ofrecer estas operaciones públicas:
 Recibe la capacidad en el constructor y valida que sea positiva. No uses Queue, LinkedList ni otras colecciones para almacenar los datos. Mantén la implementación clara y documenta brevemente las transiciones de índices, en particular el avance circular al llegar al final del arreglo.
 
 Incluye una demostración breve que permita comprobar el orden FIFO, la consulta con front sin eliminar elementos, los casos de cola vacía y llena, y la reutilización de una posición liberada después de dequeue. Al terminar, verifica que ColaEnteros.java compile y resume qué implementaste y el resultado de la verificación.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

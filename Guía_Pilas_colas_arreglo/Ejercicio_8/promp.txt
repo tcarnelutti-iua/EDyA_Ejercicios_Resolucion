@@ -14,3 +14,5 @@ Requisitos:
 - Maneja entradas inválidas sin que el programa termine inesperadamente.
 
 Incluye una prueba que agregue varios documentos y verifique que se imprimen en el mismo orden de llegada, además de casos de cola vacía y llena. Al terminar, verifica que ColaImpresion.java compile y resume qué implementaste y el resultado de la verificación.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

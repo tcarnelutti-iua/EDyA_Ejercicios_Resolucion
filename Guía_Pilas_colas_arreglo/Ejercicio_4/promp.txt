@@ -19,3 +19,5 @@ Comportamiento del historial:
 Incluye un menú por consola y maneja entradas inválidas sin terminar inesperadamente. Explica por qué una pila sigue el principio LIFO: la visita más reciente está en la cima y debe quitarse primero al volver, dejando visible la visita anterior. No implementes navegación hacia adelante.
 
 Al terminar, verifica que el archivo compile y prueba al menos este flujo: visitar dos URLs, consultar la actual, volver y comprobar que se muestra la primera URL; intentar volver sin una página anterior; e intentar volver con el historial vacío. Resume qué implementaste y el resultado de la verificación.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

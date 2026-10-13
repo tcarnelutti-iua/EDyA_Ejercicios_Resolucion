@@ -46,3 +46,5 @@ En `PilaEnterosTest.java`, crea pruebas ejecutables sin frameworks externos. Cad
 Escribe código idiomático y fácil de leer, con nombres descriptivos, encapsulación de los campos y comentarios breves que aclaren el invariante de `top` y las condiciones límite. No añadas operaciones ni funcionalidades fuera del alcance.
 
 Al terminar, presenta el contenido completo de ambos archivos y explica cómo compilarlos y ejecutar las pruebas con comandos de Java. Confirma que las pruebas cubren LIFO, pila vacía, pila llena y capacidad inválida.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

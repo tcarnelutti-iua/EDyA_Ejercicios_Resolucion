@@ -16,3 +16,5 @@ La demostración debe ser reproducible y mostrar explícitamente este caso:
 4. Intenta agregar otro valor y recházalo, explicando que no puede reutilizarse el espacio libre inicial en una cola simple lineal.
 
 Si toda la cola queda vacía, puedes reiniciar front y rear para dejarla lista para usarse de nuevo; no hagas ese reinicio en la demostración principal, porque allí todavía quedan elementos. Al terminar, verifica que ColaSimple.java compile y resume el resultado observado.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

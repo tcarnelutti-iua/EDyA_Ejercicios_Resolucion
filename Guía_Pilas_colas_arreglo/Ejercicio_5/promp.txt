@@ -16,3 +16,5 @@ Requisitos de la implementación:
 Incluye una demostración breve que use la misma clase Pila<T> con Pila<Integer>, Pila<String> y una clase simple propia, por ejemplo Persona. Muestra operaciones de apilar, consultar y desapilar. No mezcles tipos distintos dentro de una misma pila y no uses casts en el código cliente.
 
 Al terminar, verifica que Pila.java compile y resume qué implementaste, cómo se manejan los tipos y el resultado de la verificación.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

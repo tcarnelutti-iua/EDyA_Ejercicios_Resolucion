@@ -22,3 +22,5 @@ Verifica estos casos:
 - a + b -> válido, no hay paréntesis desbalanceados.
 
 Al terminar, verifica que el archivo compile y resume qué implementaste y el resultado de la verificación.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

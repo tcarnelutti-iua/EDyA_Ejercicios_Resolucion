@@ -16,3 +16,5 @@ Requisitos:
 - Mantén el código claro y divide las operaciones principales en métodos si encaja con la estructura existente.
 
 Al terminar, verifica que el archivo compile usando las herramientas disponibles en el proyecto. Informa qué modificaste y el resultado de la verificación.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.

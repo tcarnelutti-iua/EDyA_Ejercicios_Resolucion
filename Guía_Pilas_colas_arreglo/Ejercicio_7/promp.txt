@@ -14,3 +14,5 @@ Requisitos:
 - Usa índices para el frente y el final de la cola y controla cuántos elementos contiene para distinguir los estados vacío y lleno. Explica cómo avanzan los índices de forma circular.
 
 No agregues funciones de prioridad: todas las personas deben conservar el orden de llegada. Al terminar, verifica que SistemaTurnos.java compile y prueba un flujo donde se registren al menos dos personas, se consulte el frente y se atienda a ambas en el mismo orden en que llegaron. Incluye también una prueba de cola vacía y resume qué implementaste y el resultado de la verificación.
+
+Explicación sobre ajustes del prompt: No fue necesario ajustar el prompt; desde la versión inicial contemplaba los requisitos, los casos límite y las pruebas del ejercicio.
