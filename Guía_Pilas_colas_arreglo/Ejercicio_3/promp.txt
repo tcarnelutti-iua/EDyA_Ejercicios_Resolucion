@@ -1,0 +1,24 @@
+Implementa el ejercicio de validación de paréntesis balanceados en Java. Trabaja dentro de la carpeta Guía_Pilas_colas_arreglo/Ejercicio_3 y crea o edita el archivo Java correspondiente, respetando las convenciones del proyecto. No te limites a mostrar el código en el chat: realiza la implementación en el archivo.
+
+Antes de editar, explica brevemente cómo vas a resolverlo. El programa debe:
+- Leer una expresión matemática completa desde la consola, incluidos sus espacios.
+- Determinar si los paréntesis '(' y ')' están balanceados. El análisis se limita al balance de paréntesis; los demás caracteres se ignoran y no se valida la sintaxis matemática de la expresión.
+- Mostrar un resultado claro: válido o inválido.
+
+Implementa una pila usando un arreglo, sin usar Stack ni colecciones para guardar los paréntesis:
+- Usa un arreglo de caracteres con capacidad suficiente para la expresión leída, ya que la cantidad máxima de paréntesis abiertos nunca puede superar su longitud.
+- Mantén un índice para la cima de la pila, inicializado para representar que está vacía.
+- Al encontrar un '(', apílalo (push) en la cima.
+- Al encontrar un ')', si la pila está vacía, la expresión es inválida. Si hay un '(' disponible, desapílalo (pop): ese cierre queda emparejado con la apertura más reciente.
+- Al terminar de recorrer la expresión, es válida únicamente si la pila está vacía. Si quedan aperturas, faltan paréntesis de cierre.
+
+Incluye una explicación breve de por qué una pila resuelve el problema: cada paréntesis de cierre debe emparejarse con el paréntesis de apertura más reciente que todavía no fue cerrado. No uses una cola, porque su orden FIFO no representa ese emparejamiento LIFO.
+
+Verifica estos casos:
+- (5 + 3) * (2 + 1) -> válido.
+- (5 + 3)) * (2 + 1 -> inválido, hay un cierre sin apertura disponible.
+- ((a + b) * c) -> válido, incluye anidamiento.
+- (a + b -> inválido, queda una apertura sin cerrar.
+- a + b -> válido, no hay paréntesis desbalanceados.
+
+Al terminar, verifica que el archivo compile y resume qué implementaste y el resultado de la verificación.

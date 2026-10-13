@@ -1,0 +1,48 @@
+Actúa como desarrollador Java y genera una implementación clara, correcta y probada de una pila de enteros usando exclusivamente un arreglo de tamaño fijo.
+
+## Archivos a generar
+
+Genera únicamente estos dos archivos, sin declaraciones `package` ni dependencias externas:
+- `PilaEnteros.java`: implementación de la estructura.
+- `PilaEnterosTest.java`: pruebas ejecutables desde `main`.
+
+No uses `Stack`, `Deque`, colecciones, arreglos redimensionables ni ciclos para simular la pila. La estructura debe almacenar los elementos en un `int[]` y respetar estrictamente su capacidad.
+
+## Diseño y comportamiento
+
+Implementa una clase pública `PilaEnteros` con un constructor `PilaEnteros(int capacidad)` y estas operaciones públicas:
+- `void push(int valor)`: agrega un elemento en la cima.
+- `int pop()`: elimina y devuelve el elemento de la cima.
+- `int peek()`: devuelve el elemento de la cima sin eliminarlo.
+- `boolean isEmpty()`: indica si no hay elementos.
+- `boolean isFull()`: indica si se alcanzó la capacidad.
+- `int size()`: devuelve la cantidad actual de elementos.
+
+El constructor debe rechazar capacidades menores o iguales a cero con `IllegalArgumentException`. Almacena la capacidad en un arreglo creado una sola vez; no cambies su tamaño durante la ejecución.
+
+Mantén el invariante de `top`: es el índice del elemento que está en la cima y vale `-1` cuando la pila está vacía. Por lo tanto, una pila vacía tiene tamaño `0`, y una pila llena tiene `top == capacidad - 1`.
+
+Implementa las operaciones con estas reglas:
+- Antes de insertar, comprueba si la pila está llena. Si lo está, `push` debe lanzar `IllegalStateException` y dejar el contenido y el tamaño sin cambios. Si hay espacio, incrementa `top` y almacena el valor en esa posición.
+- Antes de consultar o eliminar, comprueba si la pila está vacía. `peek` y `pop` deben lanzar `IllegalStateException` con mensajes descriptivos cuando corresponda.
+- Si `pop` tiene éxito, devuelve el valor de la cima y decrementa `top` exactamente una vez.
+- `isEmpty` debe basarse en `top == -1`; `isFull`, en `top == capacidad - 1`; y `size` debe ser coherente con `top`.
+- Los errores no deben dejar la pila en un estado parcial o inconsistente.
+
+## Pruebas requeridas
+
+En `PilaEnterosTest.java`, crea pruebas ejecutables sin frameworks externos. Cada prueba debe comprobar resultados y estado de la pila; muestra un resumen claro y termina con error si alguna comprobación falla. Incluye al menos estos casos:
+1. Pila recién creada: vacía, no llena y tamaño `0`.
+2. Apilar `10` y luego `20`: `peek()` devuelve `20`, el tamaño es `2` y ambos valores siguen en orden LIFO.
+3. Desapilar: `pop()` devuelve `20`; después, `peek()` devuelve `10` y el tamaño es `1`.
+4. Llenar la pila hasta su capacidad: `isFull()` es verdadero y el tamaño coincide con la capacidad.
+5. Intentar `push` en una pila llena: se lanza `IllegalStateException` y se verifica que la cima y el tamaño no cambiaron.
+6. Vaciar la pila: `isEmpty()` es verdadero y `size()` es `0`.
+7. Intentar `pop()` y `peek()` en una pila vacía: ambos lanzan `IllegalStateException`.
+8. Crear la pila con capacidad `0` y con una capacidad negativa: ambos casos lanzan `IllegalArgumentException`.
+
+## Criterios de calidad y entrega
+
+Escribe código idiomático y fácil de leer, con nombres descriptivos, encapsulación de los campos y comentarios breves que aclaren el invariante de `top` y las condiciones límite. No añadas operaciones ni funcionalidades fuera del alcance.
+
+Al terminar, presenta el contenido completo de ambos archivos y explica cómo compilarlos y ejecutar las pruebas con comandos de Java. Confirma que las pruebas cubren LIFO, pila vacía, pila llena y capacidad inválida.

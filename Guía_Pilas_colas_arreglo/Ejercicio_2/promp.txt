@@ -1,0 +1,18 @@
+Implementa el simulador de torre de platos directamente en este archivo del proyecto:
+
+Guía_Pilas_colas_arreglo/Ejercicio_2/src/torre/TorrePlatosSimulador.java
+
+Primero revisa el contenido actual del archivo y respeta su estructura y el paquete existente. Edita ese archivo; no te limites a mostrarme el código en el chat y no crees archivos adicionales salvo que sean imprescindibles.
+
+Requisitos:
+- Implementa una pila usando un arreglo para almacenar los platos. No uses las clases Stack, Queue ni colecciones para guardar los elementos.
+- Cada plato se identifica con un nombre o número. Maneja el identificador como texto para admitir ambos formatos y nombres con espacios.
+- Incluye un menú por consola para agregar un plato, retirar el plato superior, consultar el plato superior sin retirarlo y salir.
+- Usa una capacidad máxima definida mediante una constante fácil de modificar. Si la pila está llena, rechaza el alta e informa el motivo; no redimensiones el arreglo.
+- Controla correctamente la cima de la pila y sus estados vacío y lleno.
+- Si se intenta retirar o consultar cuando la pila está vacía, informa la situación sin lanzar errores ni modificar el estado.
+- Rechaza identificadores vacíos y maneja entradas inválidas del menú sin que el programa termine inesperadamente.
+- Explica con un comentario breve o mediante la organización del código por qué este problema usa una pila: el último plato agregado es el primero en retirarse (LIFO). Aclara también que una cola no corresponde porque retiraría primero el plato más antiguo (FIFO).
+- Mantén el código claro y divide las operaciones principales en métodos si encaja con la estructura existente.
+
+Al terminar, verifica que el archivo compile usando las herramientas disponibles en el proyecto. Informa qué modificaste y el resultado de la verificación.
